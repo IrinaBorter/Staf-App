@@ -1,0 +1,52 @@
+{
+  "name": "staf-app",
+  "version": "1.0.0",
+  "description": "App for recruitment managers",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IrinaBorter/Staf-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IrinaBorter/Staf-App/issues"
+  },
+  "homepage": "https://github.com/IrinaBorter/Staf-App#readme",
+  "dependencies": {
+    "@angular/common": "~2.4.9",
+    "@angular/compiler": "~2.4.9",
+    "@angular/core": "~2.4.9",
+    "@angular/forms": "~2.4.9",
+    "@angular/http": "~2.4.9",
+    "@angular/platform-browser": "~2.4.9",
+    "@angular/platform-browser-dynamic": "~2.4.9",
+    "@angular/router": "~3.4.9",
+    "@types/node": "0.0.2",
+    "core-js": "^2.4.1",
+    "normalize.css": "^5.0.0",
+    "rxjs": "5.2.0",
+    "zone.js": "^0.7.7"
+  },
+  "devDependencies": {
+    "@types/node": "7.0.5",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "css-loader": "^0.26.0",
+    "file-loader": "^0.10.1",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.24.1",
+    "node-sass": "^4.1.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.1",
+    "typescript": "^2.1.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-notifier": "^1.5.0"
+  }
+}
