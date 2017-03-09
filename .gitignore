@@ -4,7 +4,7 @@ node_modules
 .vscode
 *.swo
 
-dist/scripts/*.bundle.js
-dist/scripts/*.bundle.js.map
+*.bundle.js
+*.bundle.js.map
 
 *.log
