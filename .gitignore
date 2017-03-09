@@ -1,0 +1,10 @@
+node_modules
+
+.idea
+.vscode
+*.swo
+
+dist/scripts/*.bundle.js
+dist/scripts/*.bundle.js.map
+
+*.log
