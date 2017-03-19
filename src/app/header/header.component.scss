@@ -1,0 +1,36 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/fonts/fonts";
+
+header {
+  background: $dirty-blue;
+  display: flex;
+  height: 60px;
+  color: $white;
+
+  h1 {
+    align-self: center;
+    font-family: $yanone-kaffeesatz, sans-serif;
+    font-weight: 300;
+    margin: 0 0 0 15px;
+
+    &:after {
+      content: '\f2ba';
+      font: 30px FontAwesome;
+      margin-left: 15px;
+    }
+  }
+
+  .menu-button {
+    width: 40px;
+    border: none;
+    background: $dirty-blue;
+    color: $white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: font-size 0.3s;
+
+    &:hover {
+      font-size: 30px;
+    }
+  }
+}
