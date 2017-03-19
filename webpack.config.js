@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -27,6 +29,11 @@ module.exports = {
         stats: 'minimal',
         compress: true,
         port: 3000,
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:3001',
+            },
+        },
     },
 
     module: {
@@ -38,12 +45,15 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: [path.join(__dirname, 'src/app')],
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader'],
+                }),
             },
             {
                 test: /\.scss$/,
                 include: [path.join(__dirname, 'src/app')],
-                use: ["raw-loader", "sass-loader"],
+                use: ['raw-loader', 'sass-loader'],
             },
             {
                 test: /\.html$/,
@@ -71,5 +81,11 @@ module.exports = {
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.resolve(__dirname, 'doesnotexist/')
         ),
+
+        new ExtractTextPlugin("style.css"),
+
+        new CopyWebpackPlugin([
+            { from: 'src/assets', to: 'assets' },
+        ]),
     ]
 }

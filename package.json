@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server"
+    "start": "concurrently --kill-others \"webpack-dev-server\""
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "core-js": "^2.4.1",
     "normalize.css": "^5.0.0",
     "rxjs": "5.2.0",
-    "zone.js": "^0.7.7"
+    "zone.js": "^0.7.7",
+    "concurrently": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "7.0.5",
@@ -47,6 +48,8 @@
     "typescript": "^2.1.4",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
-    "webpack-notifier": "^1.5.0"
+    "webpack-notifier": "^1.5.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "copy-webpack-plugin": "^4.0.1"
   }
 }
