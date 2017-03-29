@@ -9,7 +9,7 @@ header {
 
   h1 {
     align-self: center;
-    font-family: $yanone-kaffeesatz;
+    font-family: $yanone-kaffeesatz, sans-serif;
     font-weight: 300;
     margin: 0 0 0 15px;
 
@@ -23,14 +23,24 @@ header {
   .menu-button {
     width: 40px;
     border: none;
-    background: $dirty-blue;
     color: $white;
+    background: rgba($dirty-blue, 0);
     font-size: 25px;
     cursor: pointer;
     transition: font-size 0.3s;
+    z-index: 2;
+    outline: none;
 
     &:hover {
       font-size: 30px;
     }
   }
+}
+
+menu {
+  display: none;
+}
+
+.open {
+  display: block;
 }
