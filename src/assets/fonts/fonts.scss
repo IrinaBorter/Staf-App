@@ -2,7 +2,7 @@
   font-family: 'Yanone Kaffeesatz';
   font-style: normal;
   font-weight: 300;
-  src: url('/assets/fonts/YanoneKaffeesatz/Yanone_Kaffeesatz_Light.woff2') format('woff2');
+  src: url('/assets/fonts/yanone-kaffeesatz/yanone-kaffeesatz-light.woff2') format('woff2');
 }
 
-$yanone-kaffeesatz: 'Yanone Kaffeesatz';
+$yanone-kaffeesatz: 'Yanone Kaffeesatz', 'sans-serif';
