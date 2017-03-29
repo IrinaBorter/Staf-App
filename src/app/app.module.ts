@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './widgets/menu/menu.component';
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
     ],
     declarations: [
         AppComponent,
-        HeaderComponent
+        HeaderComponent,
+        MenuComponent,
     ],
     bootstrap: [ AppComponent ],
 })

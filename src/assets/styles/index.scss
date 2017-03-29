@@ -1,2 +1,7 @@
 @import "~normalize.css";
 @import './colors';
+@import '../fonts/fonts';
+
+body, a, input {
+  font-family: $roboto-condensed;
+}
