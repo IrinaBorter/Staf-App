@@ -19,28 +19,10 @@ header {
       margin-left: 15px;
     }
   }
-
-  .menu-button {
+  menu {
+    padding: 0;
+    margin: 0;
+    align-self: center;
     width: 40px;
-    border: none;
-    color: $white;
-    background: rgba($dirty-blue, 0);
-    font-size: 25px;
-    cursor: pointer;
-    transition: font-size 0.3s;
-    z-index: 2;
-    outline: none;
-
-    &:hover {
-      font-size: 30px;
-    }
   }
-}
-
-menu {
-  display: none;
-}
-
-.open {
-  display: block;
 }

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'staf-header',
@@ -7,17 +7,5 @@ import { Component, ChangeDetectionStrategy, HostListener } from '@angular/core'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-    showMenu: Boolean;
 
-    toggleMenu(): void {
-        this.showMenu = !this.showMenu;
-    }
-
-    // @HostListener('document:click', ['$event'])
-    // onClick(event:MouseEvent) {
-    //     console.log('ddd');
-    //     if (this.showMenu) {
-    //         this.showMenu = false;
-    //     }
-    // }
 }

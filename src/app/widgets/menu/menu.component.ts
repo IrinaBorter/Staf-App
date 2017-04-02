@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'menu',
@@ -6,4 +6,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     styles: [ require('./menu.component.scss') ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuComponent {}
+export class MenuComponent {
+    showMenu: Boolean = false;
+
+    toggleMenu(): void {
+        this.showMenu = !this.showMenu;
+    }
+}
