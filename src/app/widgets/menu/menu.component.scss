@@ -1,6 +1,25 @@
 @import "../../../assets/styles/colors.scss";
 @import '../../../assets/fonts/fonts';
 
+.menu-button {
+  width: 40px;
+  border: none;
+  color: $white;
+  background: rgba($dirty-blue, 0);
+  font-size: 25px;
+  cursor: pointer;
+  transition: font-size 0.3s;
+  z-index: 1;
+  outline: none;
+  position: absolute;
+  top: 0;
+  line-height: 60px;
+
+  &:hover {
+    font-size: 30px;
+  }
+}
+
 .staf-app-menu {
   width: 200px;
   height: 100%;
@@ -8,10 +27,11 @@
   flex-direction: column;
   position: fixed;
   top: 0;
-  left: 0;
   background: $dark-dirty-blue;
   padding: 20px 20px 20px 60px;
   color: $white;
+  transform: translateX(-280px);
+  transition: transform 1s;
 
   a {
     color: $white;
@@ -27,4 +47,23 @@
       background: $dirty-blue;
     }
   }
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.overlay {
+  display: none;
+  width: calc(100% - 280px);
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  margin-left: 280px;
+
+}
+
+.staf-app-menu.open + .overlay {
+  display: block;
 }
