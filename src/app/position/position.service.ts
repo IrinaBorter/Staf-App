@@ -1,0 +1,95 @@
+import { Injectable } from '@angular/core';
+
+import { Position } from './position';
+
+@Injectable()
+export class PositionService {
+    constructor() {}
+
+    getPositions(): Position[] {
+        return positions;
+    }
+}
+
+const positions: Position[] = [
+    {
+        id: 1,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 2,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 3,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 4,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 5,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 6,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 7,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 8,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 9,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+    {
+        id: 10,
+        code: '1-FG-34',
+        name: 'Junior Software Engineer',
+        project: 'Staffing Desk',
+        salary: 1000,
+        description: 'Very useful description blabla blabla blabla blabla blabla blabla.',
+    },
+];
