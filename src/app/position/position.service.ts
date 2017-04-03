@@ -6,8 +6,13 @@ import { Position } from './position';
 export class PositionService {
     constructor() {}
 
-    getPositions(): Position[] {
-        return positions;
+    getPositions(): Promise<Position[]> {
+        return Promise.resolve(positions);
+    }
+
+    getPosition(id: number) {
+        const position = positions.find(p => p.id === id);
+        return Promise.resolve(position);
     }
 }
 

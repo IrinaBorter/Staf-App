@@ -4,8 +4,8 @@
 </button>
 <nav class="staf-app-menu" [ngClass]="{'open': showMenu}">
     <h2>Меню</h2>
-    <a href="#">Позиции</a>
-    <a href="#">Сотрудники</a>
-    <a href="#">Кандидаты</a>
+    <a routerLink="positions">Позиции</a>
+    <a routerLink="employees">Сотрудники</a>
+    <a routerLink="applicants">Кандидаты</a>
 </nav>
 <div class="overlay" (click)="toggleMenu()"></div>
