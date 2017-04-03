@@ -10,7 +10,7 @@
         <p>
             <b>{{position.id}}</b>
             {{position.code}}
-            {{position.name}}
+            <a [routerLink]="[position.id]">{{position.name}}</a>
             {{position.project}}
             {{position.salary | currency:'USD':true}}
             {{position.description}}

@@ -7,7 +7,6 @@ import { PositionService } from '../position.service';
     selector: 'position-dashboard',
     template: require('./positionDashboard.component.html'),
     styles: [require('./positionDashboard.component.scss')],
-    providers: [PositionService],
 })
 
 export class PositionDashboardComponent implements OnInit {
@@ -16,6 +15,8 @@ export class PositionDashboardComponent implements OnInit {
     constructor(private positionService: PositionService) {}
 
     ngOnInit() {
-        this.positions = this.positionService.getPositions();
+        this.positionService.getPositions().then(positions => {
+            this.positions = positions;
+        });
     }
 }
