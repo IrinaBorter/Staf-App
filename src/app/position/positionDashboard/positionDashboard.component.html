@@ -1,0 +1,19 @@
+<div class="position-dashboard-header">
+    <div class="position-dashboard-header-cell">Код позиции</div>
+    <div class="position-dashboard-header-cell">Название позиции</div>
+    <div class="position-dashboard-header-cell">Проект</div>
+    <div class="position-dashboard-header-cell">Заработная плата</div>
+    <div class="position-dashboard-header-cell">Описание</div>
+</div>
+<ul class="position-dashboard">
+    <li *ngFor="let position of positions" class="position-dashboard-cell">
+        <p>
+            <b>{{position.id}}</b>
+            {{position.code}}
+            {{position.name}}
+            {{position.project}}
+            {{position.salary | currency:'USD':true}}
+            {{position.description}}
+        </p>
+    </li>
+</ul>

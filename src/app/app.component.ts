@@ -3,7 +3,7 @@ import '../assets/styles/index.scss';
 
 @Component({
     selector: 'my-app',
-    template: '<staf-header></staf-header>',
+    template: require('./app.component.html'),
 })
 
 export class AppComponent {}

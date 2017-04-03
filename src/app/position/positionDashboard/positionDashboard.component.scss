@@ -1,0 +1,15 @@
+@import '../../../assets/styles/colors';
+
+.position-dashboard-header {
+  display: flex;
+  padding: 20px 20px 0 20px;
+
+  .position-dashboard-header-cell {
+    padding: 20px;
+    background: $gray;
+    color: $white;
+    text-transform: uppercase;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
