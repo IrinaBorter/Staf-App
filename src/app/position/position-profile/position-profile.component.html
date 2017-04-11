@@ -1,4 +1,19 @@
 <div *ngIf="position">
-    <h2>{{position.name}}</h2>
-    <h4>{{position.project}}</h4>
+    <div class="position-header">
+        <header>
+            <h1>{{position.name}}</h1>
+            <h2>{{position.code}}</h2>
+        </header>
+        <nav class="position-nav">
+            <button class="button edit-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button class="button delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </nav>
+    </div>
+    <ul class="position-items">
+        <li><span>Название позиции: </span>{{position.name}}</li>
+        <li><span>Код позиции: </span>{{position.code}}</li>
+        <li><span>Проект: </span>{{position.project}}</li>
+        <li><span>Заработная плата: </span>{{position.salary}}</li>
+        <li><span>Описание: </span>{{position.description}}</li>
+    </ul>
 </div>

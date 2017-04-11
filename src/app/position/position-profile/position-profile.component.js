@@ -28,6 +28,7 @@ var PositionProfileComponent = (function () {
 PositionProfileComponent = __decorate([
     core_1.Component({
         template: require('./position-profile.component.html'),
+        styles: [require('./position-profile.component.scss')],
     }),
     __metadata("design:paramtypes", [position_service_1.PositionService,
         router_1.ActivatedRoute])

@@ -6,7 +6,9 @@ import { PositionService } from '../position.service';
 
 @Component({
     template: require('./position-profile.component.html'),
+    styles: [require('./position-profile.component.scss')],
 })
+
 export class PositionProfileComponent implements OnInit {
     position: Position;
 
