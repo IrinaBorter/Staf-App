@@ -1,5 +1,51 @@
-.position-header {
+@import '../../../assets/styles/colors';
+
+.position-profile-header {
   display: flex;
   padding: 20px 30px;
   justify-content: space-between;
+  align-items: center;
+  background: lighten($light-gray, 20%);
+  color: $dark-dirty-blue;
+
+  .position-code {
+    font-weight: normal;
+  }
+
+  .button {
+    border: none;
+    background: lighten($light-gray, 20%);
+    font-size: 30px;
+    color: $gray;
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      color: $dark-dirty-blue;
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+.position-profile-content {
+  padding: 30px;
+}
+
+.position-profile-content-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #e7e7e7;
+
+  &:first-child {
+    border-top: 1px solid #e7e7e7;
+  }
+
+  span {
+    display: inline-block;
+    width: 20%;
+    font-size: 18px;
+  }
 }
