@@ -12,5 +12,20 @@
   src: url('/assets/fonts/RobotoCondensed/RobotoCondensed.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/Lato/lato-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/Lato/lato-bold.woff2') format('woff2');
+}
+
 $yanone-kaffeesatz: 'Yanone Kaffeesatz', 'sans-serif';
 $roboto-condensed: 'Roboto Condensed', 'sans-serif';
+$lato: 'Lato', 'sans-serif';

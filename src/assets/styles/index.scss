@@ -3,7 +3,7 @@
 @import '../fonts/fonts';
 
 body, a, input {
-  font-family: $roboto-condensed;
+  font-family: $roboto-condensed, $lato;
 }
 
 table {
