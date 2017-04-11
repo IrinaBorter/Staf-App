@@ -1,19 +1,16 @@
-<div class="position-dashboard-header">
-    <div class="position-dashboard-header-cell">Код позиции</div>
-    <div class="position-dashboard-header-cell">Название позиции</div>
-    <div class="position-dashboard-header-cell">Проект</div>
-    <div class="position-dashboard-header-cell">Заработная плата</div>
-    <div class="position-dashboard-header-cell">Описание</div>
+<div class="position-dashboard">
+    <div class="table-row header">
+        <div class="column position-code">Код позиции</div>
+        <div class="column position-name">Название позиции</div>
+        <div class="column project">Проект</div>
+        <div class="column salary">Заработная плата</div>
+        <div class="column description">Описание</div>
+    </div>
+    <div *ngFor="let position of positions" class="table-row">
+        <div class="column position-code">{{position.code}}</div>
+        <div class="column position-name"><a [routerLink]="[position.id]">{{position.name}}</a></div>
+        <div class="column project">{{position.project}}</div>
+        <div class="column salary">{{position.salary | currency:'USD':true}}</div>
+        <div class="column description">{{position.description}}</div>
+    </div>
 </div>
-<ul class="position-dashboard">
-    <li *ngFor="let position of positions" class="position-dashboard-cell">
-        <p>
-            <b>{{position.id}}</b>
-            {{position.code}}
-            <a [routerLink]="[position.id]">{{position.name}}</a>
-            {{position.project}}
-            {{position.salary | currency:'USD':true}}
-            {{position.description}}
-        </p>
-    </li>
-</ul>
