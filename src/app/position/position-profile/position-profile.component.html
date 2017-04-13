@@ -1,7 +1,7 @@
 <div *ngIf="position">
     <div class="position-profile-header">
         <header>
-            <h1>{{position.name}}</h1>
+            <h1>{{position.role}}</h1>
             <h3 class="position-code">{{position.code}}</h3>
         </header>
         <nav class="position-nav">
@@ -10,10 +10,19 @@
         </nav>
     </div>
     <ul class="position-profile-content">
-        <li class="position-profile-content-item"><span>Название позиции: </span>{{position.name}}</li>
+        <li class="position-profile-content-item"><span>Название позиции: </span>{{position.role}}</li>
         <li class="position-profile-content-item"><span>Код позиции: </span>{{position.code}}</li>
+        <li class="position-profile-content-item"><span>Статус: </span>{{position.positionStatus}}</li>
         <li class="position-profile-content-item"><span>Проект: </span>{{position.project}}</li>
-        <li class="position-profile-content-item"><span>Заработная плата: </span>{{position.salary}}</li>
+        <li class="position-profile-content-item"><span>Заработная плата: </span>{{position.salary | currency:'USD':true}}</li>
+        <li class="position-profile-content-item"><span>Первичный навык: </span>{{position.primarySkill}}</li>
+        <li class="position-profile-content-item">
+            <span>Кандидаты: </span>
+            <ul>
+                <li *ngFor="let candidate of position.candidates">{{candidate}}</li>
+            </ul>
+        </li>
+        <li class="position-profile-content-item"><span>Планируемая дата начала: </span>{{position.plannedStartDate | date}}</li>
         <li class="position-profile-content-item"><span>Описание: </span>{{position.description}}</li>
     </ul>
 </div>

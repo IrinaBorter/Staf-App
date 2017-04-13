@@ -8,7 +8,7 @@
     </div>
     <div *ngFor="let position of positions" class="table-row">
         <div class="column position-code">{{position.code}}</div>
-        <div class="column position-name"><a [routerLink]="[position.id]">{{position.name}}</a></div>
+        <div class="column position-name"><a [routerLink]="[position.id]">{{position.role}}</a></div>
         <div class="column project">{{position.project}}</div>
         <div class="column salary">{{position.salary | currency:'USD':true}}</div>
         <div class="column description">{{position.description}}</div>
