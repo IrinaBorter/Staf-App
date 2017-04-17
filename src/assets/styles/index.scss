@@ -2,10 +2,23 @@
 @import './colors';
 @import '../fonts/fonts';
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body, a, input {
-  font-family: $roboto-condensed;
+  font-family: $roboto-condensed, $lato;
 }
 
 table {
   padding: 20px 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+ul, ol {
+  list-style: none;
 }
