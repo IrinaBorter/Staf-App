@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: '<h2>page not found</h2>',
+    template: '<img src="../../../assets/images/page-not-found.png" width="100%"  alt="Page not found">',
 })
 export class PageNotFoundComponent {}
