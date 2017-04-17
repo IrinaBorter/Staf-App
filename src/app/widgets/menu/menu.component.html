@@ -3,9 +3,9 @@
     <i *ngSwitchCase="true" class="fa fa-times" aria-hidden="true"></i>
 </button>
 <nav class="staf-app-menu" [ngClass]="{'open': showMenu}">
-    <h2>Меню</h2>
-    <a routerLink="positions">Позиции</a>
-    <a routerLink="employees">Сотрудники</a>
-    <a routerLink="applicants">Кандидаты</a>
+    <h2 class="menu-title">Меню</h2>
+    <a routerLink="positions" (click)="toggleMenu()">Позиции</a>
+    <a routerLink="employees" (click)="toggleMenu()">Сотрудники</a>
+    <a routerLink="applicants" (click)="toggleMenu()">Кандидаты</a>
 </nav>
 <div class="overlay" (click)="toggleMenu()"></div>
