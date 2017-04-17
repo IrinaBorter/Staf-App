@@ -103,38 +103,5 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-right: 4px;
+  padding-right: 10px;
 }
-
-//.position-dashboard-header {
-//  display: flex;
-//
-//  .position-dashboard-header-cell {
-//    padding: 20px;
-//    background: $gray;
-//    color: $white;
-//    text-transform: uppercase;
-//    text-align: center;
-//    font-weight: normal;
-//    transition: background 0.3s;
-//    flex-grow: 0; -webkit-flex-grow: 0;
-//    flex-shrink: 0; -webkit-flex-shrink: 0;
-//    vertical-align: top;
-//
-//    &:hover {
-//      background: lighten($gray, 10%);
-//    }
-//
-//    &:not(:last-child) {
-//      border-right: 1px solid $white;
-//    }
-//  }
-//}
-//
-//.position-dashboard-row {
-//  display: flex;
-//
-//  &:not(:last-child) {
-//    border-bottom: 1px solid $gray;
-//  }
-//}
