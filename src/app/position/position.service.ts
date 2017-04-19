@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { Position } from './position';
 
 @Injectable()
 export class PositionService {
-    constructor() {}
+    constructor(private http: Http) {}
 
     getPositions(): Promise<Position[]> {
-        return Promise.resolve(positions);
+        return this.http.get('/api/positions')
+            .toPromise()
+            .then(response => response.json() as Position[]);
     }
 
-    getPosition(id: number) {
-        const position = positions.find(p => p.id === id);
-        return Promise.resolve(position);
+    getPosition(id: number): Promise<Position> {
+        return this.http.get(`/api/positions/${id}`)
+            .toPromise()
+            .then(response => response.json() as Position);
     }
 }
 

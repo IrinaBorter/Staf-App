@@ -31,7 +31,10 @@
     "normalize.css": "^5.0.0",
     "rxjs": "5.2.0",
     "zone.js": "^0.7.7",
-    "concurrently": "^3.4.0"
+    "concurrently": "^3.4.0",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.9.5"
   },
   "devDependencies": {
     "@types/node": "7.0.5",
