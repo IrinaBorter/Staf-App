@@ -5,7 +5,7 @@
             <h3 class="position-code">{{position.code}}</h3>
         </header>
         <nav class="position-nav">
-            <button class="button edit-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button class="button edit-button" [routerLink]="['/positions/edit', position.id]"><i class="fa fa-pencil" aria-hidden="true"></i></button>
             <button class="button delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </nav>
     </div>

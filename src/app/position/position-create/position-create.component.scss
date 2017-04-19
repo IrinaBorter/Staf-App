@@ -1,0 +1,94 @@
+@import "../../../assets/styles/colors";
+
+.position-create-header {
+  display: flex;
+  padding: 20px 30px;
+  text-align: center;
+  background: lighten($light-gray, 20%);
+  color: $dark-dirty-blue;
+  justify-content: space-between;
+}
+
+.position-create-nav {
+  align-self: center;
+}
+
+.button {
+  height: 35px;
+  padding: 2px 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid $dirty-blue;
+  transition: background 0.3s;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.cancel-button {
+  background-color: $white;
+  border: 1px solid $dirty-blue;
+  color: $gray;
+  
+  &:hover {
+    background: $dark-dirty-blue;
+    color: $white;
+  }
+}
+
+.save-button {
+  background-color: $dirty-blue;
+  border: 1px solid $dirty-blue;
+  color: $white;
+
+  &:hover {
+    background: darken($dirty-blue, 20%);
+  }
+}
+
+.position-create-form-column {
+  width: 400px;
+  margin: 0 1px 1px 0;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.position-create-form {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  background: $white-gray;
+  border-top: 3px dashed $dark-dirty-blue;
+
+  label {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+
+  input {
+    width: 385px;
+    height: 25px;
+    font-size: 17px;
+    padding: 2px 5px;
+    outline: none;
+  }
+
+  textarea {
+    width: 375px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+  }
+}

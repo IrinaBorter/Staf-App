@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PositionDashboardComponent } from './positionDashboard/positionDashboard.component';
 import { PositionProfileComponent } from './position-profile/position-profile.component';
+import { PositionCreateComponent } from './position-create/position-create.component';
 
 const routes: Routes = [{
     path: 'positions',
@@ -10,6 +11,9 @@ const routes: Routes = [{
 }, {
     path: 'positions/:id',
     component: PositionProfileComponent,
+}, {
+    path: 'positions/edit/:id',
+    component: PositionCreateComponent,
 }];
 
 @NgModule({

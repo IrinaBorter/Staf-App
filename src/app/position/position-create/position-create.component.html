@@ -1,0 +1,40 @@
+<div *ngIf="position">
+    <div class="position-create-header">
+        <h1>{{position.role}}</h1>
+        <nav class="position-create-nav">
+            <button class="cancel-button button">Отмена</button>
+            <button class="save-button button">Сохранить</button>
+        </nav>
+    </div>
+    <form class="position-create-form">
+        <div class="position-create-form-column">
+            <label for="position-name">Название позиции: </label>
+            <input type="text" id="position-name" name="name" [(ngModel)]="position.role">
+
+            <label for="position-code">Код позиции: </label>
+            <input type="text" id="position-code" name="code" [(ngModel)]="position.code">
+
+            <label for="position-status">Статус: </label>
+            <input type="text" id="position-status" name="status" [(ngModel)]="position.positionStatus">
+
+            <label for="project">Проект: </label>
+            <input type="text" id="project" name="project" [(ngModel)]="position.project">
+
+            <label for="salary">Заработная плата: </label>
+            <input type="number" id="salary" name="salary" [(ngModel)]="position.salary">
+        </div>
+        <div class="position-create-form-column">
+            <label for="primary-skill">Первичный навык: </label>
+            <input type="text" id="primary-skill" name="primarySkill" [(ngModel)]="position.primarySkill">
+
+            <label for="candidates">Кандидаты: </label>
+            <input type="text" id="candidates" name="candidates" [(ngModel)]="position.candidates">
+
+            <label for="planned-start-date">Планируемая дата начала: </label>
+            <material-datepicker [(date)]="yourModelDate" id="planned-start-date"></material-datepicker>
+
+            <label for="description">Описание: </label>
+            <textarea id="description" name="description" [(ngModel)]="position.description"></textarea>
+        </div>
+    </form>
+</div>
