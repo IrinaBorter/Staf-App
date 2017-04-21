@@ -1,9 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const server = express();
-const  { getPositions, getPosition } = require('./controllers/positions');
+const  { getPositions, getPosition, updatePosition } = require('./controllers/positions');
 const staticPath = path.resolve('../public/dist');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
@@ -17,10 +18,17 @@ mongoose.connect('mongodb://localhost/staff', (error) => {
     }
 });
 
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+server.use(bodyParser.json());
+
 server.use('/', express.static('../public/dist'));
 
 server.get('/api/positions', getPositions);
 server.get('/api/positions/:id', getPosition);
+server.put('/api/positions/edit', updatePosition);
 
 server.get('*', (request, response) => {
     response.sendFile(staticPath + '/index.html');

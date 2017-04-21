@@ -23,7 +23,20 @@ function getPosition(req, res) {
     });
 }
 
+function updatePosition(req, res) {
+    const position = req.body.position;
+
+    Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
+        if (error) {
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+}
+
 module.exports =  {
     getPositions,
-    getPosition
+    getPosition,
+    updatePosition,
 };

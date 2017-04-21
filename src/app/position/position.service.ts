@@ -18,6 +18,12 @@ export class PositionService {
             .toPromise()
             .then(response => response.json() as Position);
     }
+
+    updatePosition(position: Position): Promise<any> {
+        return this.http.put('/api/positions/edit', { position })
+            .toPromise()
+            .then(response => response);
+    }
 }
 
 const positions: Position[] = [
