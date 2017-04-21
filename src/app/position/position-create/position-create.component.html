@@ -3,7 +3,7 @@
         <h1>{{position.role}}</h1>
         <nav class="position-create-nav">
             <button class="cancel-button button">Отмена</button>
-            <button class="save-button button">Сохранить</button>
+            <button class="save-button button" (click)="updatePosition(position)">Сохранить</button>
         </nav>
     </div>
     <form class="position-create-form">

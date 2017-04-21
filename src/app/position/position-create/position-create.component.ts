@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Position } from '../position';
 import { PositionService } from '../position.service';
@@ -17,6 +17,7 @@ export class PositionCreateComponent implements OnInit {
     constructor(
         private positionService: PositionService,
         private route: ActivatedRoute,
+        private router: Router,
     ) {}
 
     ngOnInit() {
@@ -25,5 +26,13 @@ export class PositionCreateComponent implements OnInit {
             .subscribe((position: Position) => {
                 this.position = position;
             });
+    }
+
+    updatePosition() {
+        this.positionService.updatePosition(this.position).then(response => {
+            if (response.status === 200) {
+                this.router.navigateByUrl(`positions/${this.position.id}`);
+            }
+        });
     }
 }
