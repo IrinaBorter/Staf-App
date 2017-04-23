@@ -30,6 +30,12 @@ export class PositionService {
             .toPromise()
             .then(response => response);
     }
+
+    deletePosition(position: Position): Promise<any> {
+        return this.http.delete('/api/positions/delete', { body: { id: position.id } })
+            .toPromise()
+            .then(response => response);
+    }
 }
 
 const positions: Position[] = [
