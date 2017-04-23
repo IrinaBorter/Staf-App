@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Position } from '../position';
 import { PositionService } from '../position.service';
@@ -12,18 +12,51 @@ import { PositionService } from '../position.service';
 
 export class PositionCreateComponent implements OnInit {
     position: Position;
-    yourModelDate = new Date();
+    mode: String;
+    yourModelDate: Date;
 
     constructor(
         private positionService: PositionService,
         private route: ActivatedRoute,
+        private router: Router,
     ) {}
 
     ngOnInit() {
-        const id = this.route.params
-            .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
-            .subscribe((position: Position) => {
-                this.position = position;
-            });
+        this.mode = this.identifyMode();
+
+        if (this.mode === 'edit') {
+            const id = this.route.params
+                .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
+                .subscribe((position: Position) => {
+                    this.position = position;
+                    this.yourModelDate = new Date(position.plannedStartDate);
+                });
+        } else {
+            this.position = new Position();
+        }
+    }
+
+    identifyMode() {
+        return this.route.snapshot.params['id'] ? 'edit' : 'create';
+    }
+
+    updatePosition() {
+        this.position.plannedStartDate = new Date(this.yourModelDate.toString());
+
+        this.positionService.updatePosition(this.position).then(response => {
+            if (response.status === 200) {
+                this.router.navigateByUrl(`positions/${this.position.id}`);
+            }
+        });
+    }
+
+    createPosition() {
+        this.position.plannedStartDate = new Date(this.yourModelDate.toString());
+
+        this.positionService.createPosition(this.position).then(response => {
+            if (response.status === 200) {
+                this.router.navigateByUrl(`positions/${response.id}`);
+            }
+        });
     }
 }

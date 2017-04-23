@@ -59,22 +59,9 @@ function updatePosition(req, res) {
     });
 }
 
-function deletePosition(req, res) {
-    const id = req.body.id;
-
-    Position.remove({ id: id }, (error) => {
-        if (error) {
-            res.sendStatus(400);
-        } else {
-            res.sendStatus(200);
-        }
-    });
-}
-
 module.exports =  {
     getPositions,
     getPosition,
     updatePosition,
     createPosition,
-    deletePosition,
 };
