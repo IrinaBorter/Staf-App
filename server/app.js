@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const server = express();
-const  { getPositions, getPosition, updatePosition } = require('./controllers/positions');
+const  { getPositions, getPosition, updatePosition, createPosition } = require('./controllers/positions');
 const staticPath = path.resolve('../public/dist');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
@@ -29,6 +29,7 @@ server.use('/', express.static('../public/dist'));
 server.get('/api/positions', getPositions);
 server.get('/api/positions/:id', getPosition);
 server.put('/api/positions/edit', updatePosition);
+server.post('/api/positions/create', createPosition);
 
 server.get('*', (request, response) => {
     response.sendFile(staticPath + '/index.html');

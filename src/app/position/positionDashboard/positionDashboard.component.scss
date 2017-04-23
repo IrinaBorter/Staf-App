@@ -105,3 +105,25 @@
   text-overflow: ellipsis;
   padding-right: 10px;
 }
+
+.position-dashboard-nav {
+  padding: 25px 15px 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-position-button {
+  background: $white;
+  border: 1px dashed $dark-dirty-blue;
+  height: 40px;
+  padding: 5px 10px;
+  color: $dark-dirty-blue;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-dirty-blue;
+    color: $white;
+  }
+}
