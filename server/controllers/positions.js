@@ -25,7 +25,7 @@ function getPosition(req, res) {
 function createPosition(req, res) {
     Position.count({}, (error, length) => {
         const position = new Position({
-            id: length,
+            id: length + 1,
             code: req.body.position.code,
             role: req.body.position.role,
             project: req.body.position.project,
@@ -41,7 +41,7 @@ function createPosition(req, res) {
             if (error) {
                 res.sendStatus(400);
             } else {
-                res.status(200).send({ id: position.id });
+                res.status(200).send({ id: position.id, status: 200 });
             }
         });
     });

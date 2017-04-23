@@ -51,9 +51,11 @@ export class PositionCreateComponent implements OnInit {
     }
 
     createPosition() {
+        this.position.plannedStartDate = new Date(this.yourModelDate.toString());
+
         this.positionService.createPosition(this.position).then(response => {
             if (response.status === 200) {
-                this.router.navigateByUrl(`positions/${response}`);
+                this.router.navigateByUrl(`positions/${response.id}`);
             }
         });
     }
