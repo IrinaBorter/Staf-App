@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './widgets/menu/menu.component';
 import { PositionModule } from './position/position.module';
+import { EmployeeModule } from './employee/employee.module';
 import { PageNotFoundComponent } from './widgets/page-not-found/page-not-found.component';
 
 
@@ -14,6 +15,7 @@ import { PageNotFoundComponent } from './widgets/page-not-found/page-not-found.c
     imports: [
         BrowserModule,
         PositionModule,
+        EmployeeModule,
         RouterModule,
         AppRoutingModule,
     ],
