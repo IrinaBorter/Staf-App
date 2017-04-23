@@ -1,0 +1,44 @@
+<div *ngIf="employee">
+    <div class="employee-create-header">
+        <h1>{{employee.firstName + ' ' + employee.lastName}}</h1>
+        <nav class="employee-create-nav">
+            <button class="cancel-button button">Отмена</button>
+            <button class="save-button button"
+                    (click)="mode === 'create' ? createEmployee(employee) : updateEmployee(employee)"
+            >
+                Сохранить
+            </button>
+        </nav>
+    </div>
+    <form class="employee-create-form">
+        <div class="employee-create-form-column">
+            <label for="employee-first-name">Имя: </label>
+            <input type="text" id="employee-first-name" name="firstName" [(ngModel)]="employee.firstName">
+
+            <label for="employee-last-name">Фамилия: </label>
+            <input type="text" id="employee-last-name" name="lastName" [(ngModel)]="employee.lastName">
+
+            <label for="employee-title">Должность: </label>
+            <input type="text" id="employee-title" name="title" [(ngModel)]="employee.title">
+
+            <label for="project">Проект: </label>
+            <input type="text" id="project" name="project" [(ngModel)]="employee.project">
+
+            <label for="position">Позиция: </label>
+            <input type="text" id="position" name="position" [(ngModel)]="employee.position">
+        </div>
+        <div class="employee-create-form-column">
+            <label for="primary-skill">Первичный навык: </label>
+            <input type="text" id="primary-skill" name="primarySkill" [(ngModel)]="employee.primarySkill">
+
+            <label for="location">Локация: </label>
+            <input type="text" id="location" name="location" [(ngModel)]="employee.location">
+
+            <label for="language">Язык: </label>
+            <input type="text" id="language" name="language" [(ngModel)]="employee.language">
+
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" [(ngModel)]="employee.email">
+        </div>
+    </form>
+</div>
