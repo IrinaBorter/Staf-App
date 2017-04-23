@@ -18,6 +18,24 @@ export class PositionService {
             .toPromise()
             .then(response => response.json() as Position);
     }
+
+    createPosition(position: Position) {
+        return this.http.post('/api/positions/create', { position })
+            .toPromise()
+            .then(response => response.json());
+    }
+
+    updatePosition(position: Position): Promise<any> {
+        return this.http.put('/api/positions/edit', { position })
+            .toPromise()
+            .then(response => response);
+    }
+
+    deletePosition(position: Position): Promise<any> {
+        return this.http.delete('/api/positions/delete', { body: { id: position.id } })
+            .toPromise()
+            .then(response => response);
+    }
 }
 
 const positions: Position[] = [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Position } from '../position';
 import { PositionService } from '../position.service';
@@ -15,11 +15,20 @@ export class PositionProfileComponent implements OnInit {
     constructor(
         private positionService: PositionService,
         private route: ActivatedRoute,
+        private router: Router,
     ) {}
 
     ngOnInit() {
         const id = this.route.params
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
             .subscribe((position: Position) => this.position = position);
+    }
+
+    deletePosition(position: Position) {
+        this.positionService.deletePosition(position).then(response => {
+            if (response.status === 200) {
+                this.router.navigateByUrl('positions');
+            }
+        });
     }
 }
