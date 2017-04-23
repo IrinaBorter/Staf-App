@@ -19,6 +19,12 @@ export class PositionService {
             .then(response => response.json() as Position);
     }
 
+    createPosition(position: Position) {
+        return this.http.post('/api/positions/create', { position })
+            .toPromise()
+            .then(response => response.json());
+    }
+
     updatePosition(position: Position): Promise<any> {
         return this.http.put('/api/positions/edit', { position })
             .toPromise()
