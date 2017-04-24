@@ -59,9 +59,22 @@ function updateEmployee(req, res) {
     });
 }
 
+function deleteEmployee(req, res) {
+    const id = req.body.id;
+
+    Employee.remove({ id: id }, (error) => {
+        if (error) {
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+}
+
 module.exports =  {
     getEmployees,
     getEmployee,
     updateEmployee,
     createEmployee,
+    deleteEmployee,
 };
