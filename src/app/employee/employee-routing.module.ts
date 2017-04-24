@@ -3,8 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 const routes: Routes = [
+    {
+        path: 'employees',
+        component: EmployeeDashboardComponent,
+    },
     {
         path: 'employees/create',
         component: EmployeeCreateComponent,

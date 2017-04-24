@@ -8,6 +8,7 @@ import { EmployeeService } from './employee.service';
 
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { EmployeeProfileComponent } from './employee-profile/employee-profile.co
     declarations: [
         EmployeeCreateComponent,
         EmployeeProfileComponent,
+        EmployeeDashboardComponent,
     ],
     providers: [EmployeeService],
 })
