@@ -1,0 +1,44 @@
+<div *ngIf="applicant">
+    <div class="applicant-create-header">
+        <h1>{{applicant.firstName + ' ' + applicant.lastName}}</h1>
+        <nav class="applicant-create-nav">
+            <button class="cancel-button button">Отмена</button>
+            <button class="save-button button"
+                    (click)="mode === 'create' ? createApplicant(applicant) : updateApplicant(applicant)"
+            >
+                Сохранить
+            </button>
+        </nav>
+    </div>
+    <form class="applicant-create-form">
+        <div class="applicant-create-form-column">
+            <label for="applicant-first-name">Имя: </label>
+            <input type="text" id="applicant-first-name" name="firstName" [(ngModel)]="applicant.firstName">
+
+            <label for="applicant-last-name">Фамилия: </label>
+            <input type="text" id="applicant-last-name" name="lastName" [(ngModel)]="applicant.lastName">
+
+            <label for="applicant-title">Специализация: </label>
+            <input type="text" id="applicant-title" name="title" [(ngModel)]="applicant.title">
+
+            <label for="project">Проект: </label>
+            <input type="text" id="project" name="project" [(ngModel)]="applicant.project">
+
+            <label for="position">Позиция: </label>
+            <input type="text" id="position" name="position" [(ngModel)]="applicant.position">
+        </div>
+        <div class="applicant-create-form-column">
+            <label for="primary-skill">Первичный навык: </label>
+            <input type="text" id="primary-skill" name="primarySkill" [(ngModel)]="applicant.primarySkill">
+
+            <label for="location">Локация: </label>
+            <input type="text" id="location" name="location" [(ngModel)]="applicant.location">
+
+            <label for="language">Язык: </label>
+            <input type="text" id="language" name="language" [(ngModel)]="language">
+
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" [(ngModel)]="applicant.email">
+        </div>
+    </form>
+</div>
