@@ -1,0 +1,19 @@
+<nav class="employee-dashboard-nav">
+    <button class="create-employee-button" [routerLink]="['/employees/create']">Создать сотрудника</button>
+</nav>
+<div class="employee-dashboard">
+    <div class="table-row header">
+        <div class="column employee-first-name">Имя</div>
+        <div class="column employee-last-name">Фамилия</div>
+        <div class="column position">Позиция</div>
+        <div class="column project">Проект</div>
+        <div class="column primary-skill">Первичный навык</div>
+    </div>
+    <div *ngFor="let employee of employees" class="table-row">
+        <div class="column employee-first-name"><a [routerLink]="[employee.id]">{{employee.firstName}}</a></div>
+        <div class="column employee-last-name"><a [routerLink]="[employee.id]">{{employee.lastName}}</a></div>
+        <div class="column position">{{employee.position}}</div>
+        <div class="column project">{{employee.project}}</div>
+        <div class="column primary-skill">{{employee.primarySkill}}</div>
+    </div>
+</div>
