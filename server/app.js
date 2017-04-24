@@ -8,7 +8,7 @@ const staticPath = path.resolve('../public/dist');
 
 const  { getPositions, getPosition, updatePosition, createPosition } = require('./controllers/positions');
 const  { getEmployees, getEmployee, updateEmployee, createEmployee } = require('./controllers/employees');
-const  { getApplicants, getApplicant, updateApplicant, createApplicant } = require('./controllers/applicants');
+const  { getApplicants, getApplicant, updateApplicant, createApplicant, deleteApplicant } = require('./controllers/applicants');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
     if (error) {
@@ -43,6 +43,7 @@ server.get('/api/applicants', getApplicants);
 server.get('/api/applicants/:id', getApplicant);
 server.put('/api/applicants/edit', updateApplicant);
 server.post('/api/applicants/create', createApplicant);
+server.delete('/api/applicants/delete', deleteApplicant);
 
 server.get('*', (request, response) => {
     response.sendFile(staticPath + '/index.html');

@@ -59,9 +59,22 @@ function updateApplicant(req, res) {
     });
 }
 
+function deleteApplicant(req, res) {
+    const id = req.body.id;
+
+    Applicant.remove({ id: id }, (error) => {
+        if (error) {
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+}
+
 module.exports =  {
     getApplicants,
     getApplicant,
     updateApplicant,
     createApplicant,
+    deleteApplicant,
 };
