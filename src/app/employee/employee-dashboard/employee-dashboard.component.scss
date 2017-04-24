@@ -1,6 +1,42 @@
 @import '../../../assets/styles/colors';
 @import '../../../assets/styles/sizes';
 
+.employee-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: $white-gray;
+}
+
+.employee-dashboard-title {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: $dark-dirty-blue;
+}
+
+.employee-dashboard-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-employee-button {
+  background: $white;
+  border: 1px dashed $dark-dirty-blue;
+  height: 40px;
+  padding: 5px 10px;
+  color: $dark-dirty-blue;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-dirty-blue;
+    color: $white;
+  }
+}
+
 .employee-dashboard {
   margin: 10px 15px 20px;
   box-shadow: 0 2px 5px 1px $light-gray;
@@ -104,24 +140,3 @@
   padding-right: 10px;
 }
 
-.employee-dashboard-nav {
-  padding: 25px 15px 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.create-employee-button {
-  background: $white;
-  border: 1px dashed $dark-dirty-blue;
-  height: 40px;
-  padding: 5px 10px;
-  color: $dark-dirty-blue;
-  text-transform: uppercase;
-  transition: background 0.5s;
-  cursor: pointer;
-
-  &:hover {
-    background: $dark-dirty-blue;
-    color: $white;
-  }
-}

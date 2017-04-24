@@ -4,9 +4,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const server = express();
+const staticPath = path.resolve('../public/dist');
+
 const  { getPositions, getPosition, updatePosition, createPosition, deletePosition } = require('./controllers/positions');
 const  { getEmployees, getEmployee, updateEmployee, createEmployee, deleteEmployee } = require('./controllers/employees');
-const staticPath = path.resolve('../public/dist');
+const  { getApplicants, getApplicant, updateApplicant, createApplicant, deleteApplicant } = require('./controllers/applicants');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
     if (error) {
@@ -38,6 +40,12 @@ server.get('/api/employees/:id', getEmployee);
 server.put('/api/employees/edit', updateEmployee);
 server.post('/api/employees/create', createEmployee);
 server.delete('/api/employees/delete', deleteEmployee);
+
+server.get('/api/applicants', getApplicants);
+server.get('/api/applicants/:id', getApplicant);
+server.put('/api/applicants/edit', updateApplicant);
+server.post('/api/applicants/create', createApplicant);
+server.delete('/api/applicants/delete', deleteApplicant);
 
 server.get('*', (request, response) => {
     response.sendFile(staticPath + '/index.html');

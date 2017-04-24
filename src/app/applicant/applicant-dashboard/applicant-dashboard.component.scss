@@ -1,7 +1,7 @@
 @import '../../../assets/styles/colors';
 @import '../../../assets/styles/sizes';
 
-.position-dashboard-header {
+.applicant-dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,19 +9,19 @@
   background: $white-gray;
 }
 
-.position-dashboard-title {
+.applicant-dashboard-title {
   font-weight: normal;
   text-transform: uppercase;
   font-size: 24px;
   color: $dark-dirty-blue;
 }
 
-.position-dashboard-nav {
+.applicant-dashboard-nav {
   display: flex;
   justify-content: flex-end;
 }
 
-.create-position-button {
+.create-applicant-button {
   background: $white;
   border: 1px dashed $dark-dirty-blue;
   height: 40px;
@@ -37,11 +37,11 @@
   }
 }
 
-.position-dashboard {
+.applicant-dashboard {
   margin: 10px 15px 20px;
   box-shadow: 0 2px 5px 1px $light-gray;
 
-  .position-dashboard-cell {
+  .applicant-dashboard-cell {
     padding: 20px;
     flex-grow: 0; -webkit-flex-grow: 0;
     flex-shrink: 0; -webkit-flex-shrink: 0;
@@ -69,15 +69,15 @@
 
 .header {
   background-color: $gray;
-  color: white;
+  color: $white;
   font-size: 20px;
 
   .column:hover {
-      background: lighten($gray, 10%);
+    background: lighten($gray, 10%);
   }
 
   .column:not(:last-child) {
-      border-right: 1px solid $white;
+    border-right: 1px solid $white;
   }
 }
 
@@ -91,7 +91,7 @@
   transition: background 0.3s;
 }
 
-.position-code {
+.applicant-first-name {
   width: $position-code-column;
   flex-grow: 0;
   -webkit-flex-grow: 0;
@@ -100,7 +100,7 @@
   vertical-align: top;
 }
 
-.position-name {
+.applicant-last-name {
   width: $position-name-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
@@ -110,7 +110,7 @@
   padding-right: 4px;
 }
 
-.project {
+.position {
   width: $project-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
@@ -120,7 +120,7 @@
   padding-right: 4px;
 }
 
-.salary {
+.project {
   width: $salary-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
@@ -130,7 +130,7 @@
   padding-right: 4px;
 }
 
-.description {
+.primary-skill {
   width: $description-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
@@ -139,3 +139,4 @@
   text-overflow: ellipsis;
   padding-right: 10px;
 }
+
