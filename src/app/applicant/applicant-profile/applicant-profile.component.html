@@ -1,0 +1,28 @@
+<div *ngIf="applicant">
+    <div class="applicant-profile-header">
+        <header>
+            <h1>{{applicant.firstName + ' ' + applicant.lastName}}</h1>
+            <h3 class="applicant-title">{{applicant.title}}</h3>
+        </header>
+        <nav class="applicant-nav">
+            <button class="button edit-button" [routerLink]="['/applicants/edit', applicant.id]"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button class="button delete-button" (click)="deleteApplicant(applicant)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </nav>
+    </div>
+    <ul class="applicant-profile-content">
+        <li class="applicant-profile-content-item"><span>Имя: </span>{{applicant.firstName}}</li>
+        <li class="applicant-profile-content-item"><span>Фамилия: </span>{{applicant.lastName}}</li>
+        <li class="applicant-profile-content-item"><span>Должность: </span>{{applicant.title}}</li>
+        <li class="applicant-profile-content-item"><span>Позиция: </span>{{applicant.position}}</li>
+        <li class="applicant-profile-content-item"><span>Проект: </span>{{applicant.project}}</li>
+        <li class="applicant-profile-content-item"><span>Первичный навык: </span>{{applicant.primarySkill}}</li>
+        <li class="applicant-profile-content-item"><span>Локация: </span>{{applicant.location}}</li>
+        <li class="applicant-profile-content-item">
+            <span>Язык: </span>
+            <ul class="applicant-language-list">
+                <li *ngFor="let languageItem of applicant.language">{{languageItem}}</li>
+            </ul>
+        </li>
+        <li class="applicant-profile-content-item"><span>Email: </span>{{applicant.email}}</li>
+    </ul>
+</div>
