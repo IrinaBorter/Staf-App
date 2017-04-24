@@ -1,0 +1,19 @@
+<nav class="applicant-dashboard-nav">
+    <button class="create-applicant-button" [routerLink]="['/applicants/create']">Создать кандидата</button>
+</nav>
+<div class="applicant-dashboard">
+    <div class="table-row header">
+        <div class="column applicant-first-name">Имя</div>
+        <div class="column applicant-last-name">Фамилия</div>
+        <div class="column position">Позиция</div>
+        <div class="column project">Проект</div>
+        <div class="column primary-skill">Первичный навык</div>
+    </div>
+    <div *ngFor="let applicant of applicants" class="table-row">
+        <div class="column applicant-first-name"><a [routerLink]="[applicant.id]">{{applicant.firstName}}</a></div>
+        <div class="column applicant-last-name"><a [routerLink]="[applicant.id]">{{applicant.lastName}}</a></div>
+        <div class="column position">{{applicant.position}}</div>
+        <div class="column project">{{applicant.project}}</div>
+        <div class="column primary-skill">{{applicant.primarySkill}}</div>
+    </div>
+</div>
