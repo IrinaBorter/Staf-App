@@ -25,6 +25,8 @@ export class ApplicantCreateComponent implements OnInit {
         this.mode = this.identifyMode();
 
         if (this.mode === 'edit') {
+            document.title = 'Edit Applicant';
+
             const id = this.route.params
                 .switchMap((params: Params) => this.applicantService.getApplicant(+params['id']))
                 .subscribe((applicant: Applicant) => {
@@ -32,6 +34,8 @@ export class ApplicantCreateComponent implements OnInit {
                     this.language = applicant.language[0];
                 });
         } else {
+            document.title = 'Create Applicant';
+
             this.applicant = new Applicant();
         }
     }

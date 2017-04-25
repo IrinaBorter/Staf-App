@@ -19,6 +19,8 @@ export class ApplicantProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        document.title = 'Applicant Profile';
+
         const id = this.route.params
             .switchMap((params: Params) => this.applicantService.getApplicant(+params['id']))
             .subscribe((applicant: Applicant) => this.applicant = applicant);

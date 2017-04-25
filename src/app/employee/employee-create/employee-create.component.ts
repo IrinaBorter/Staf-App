@@ -24,12 +24,16 @@ export class EmployeeCreateComponent implements OnInit {
         this.mode = this.identifyMode();
 
         if (this.mode === 'edit') {
+            document.title = 'Edit Employee';
+
             const id = this.route.params
                 .switchMap((params: Params) => this.employeeService.getEmployee(+params['id']))
                 .subscribe((employee: Employee) => {
                     this.employee = employee;
                 });
         } else {
+            document.title = 'Create Employee';
+
             this.employee = new Employee();
         }
     }

@@ -19,6 +19,8 @@ export class EmployeeProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        document.title = 'Employee Profile';
+
         const id = this.route.params
             .switchMap((params: Params) => this.employeeService.getEmployee(+params['id']))
             .subscribe((employee: Employee) => this.employee = employee);

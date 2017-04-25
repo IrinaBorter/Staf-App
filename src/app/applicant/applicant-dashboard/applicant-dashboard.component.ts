@@ -15,6 +15,8 @@ export class ApplicantDashboardComponent implements OnInit {
     constructor(private applicantService: ApplicantService) {}
 
     ngOnInit() {
+        document.title = 'Applicant Dashboard';
+
         this.applicantService.getApplicants().then(applicants => {
             this.applicants = applicants;
         });

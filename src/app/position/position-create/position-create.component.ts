@@ -25,6 +25,8 @@ export class PositionCreateComponent implements OnInit {
         this.mode = this.identifyMode();
 
         if (this.mode === 'edit') {
+            document.title = 'Edit Position';
+
             const id = this.route.params
                 .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
                 .subscribe((position: Position) => {
@@ -32,6 +34,7 @@ export class PositionCreateComponent implements OnInit {
                     this.yourModelDate = new Date(position.plannedStartDate);
                 });
         } else {
+            document.title = 'Create Position';
             this.position = new Position();
         }
     }

@@ -15,6 +15,8 @@ export class EmployeeDashboardComponent implements OnInit {
     constructor(private employeeService: EmployeeService) {}
 
     ngOnInit() {
+        document.title = 'Employee Dashboard';
+
         this.employeeService.getEmployees().then(employees => {
             this.employees = employees;
         });

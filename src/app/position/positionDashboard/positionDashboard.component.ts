@@ -15,6 +15,8 @@ export class PositionDashboardComponent implements OnInit {
     constructor(private positionService: PositionService) {}
 
     ngOnInit() {
+        document.title = 'Position Dashboard';
+
         this.positionService.getPositions().then(positions => {
             this.positions = positions;
         });

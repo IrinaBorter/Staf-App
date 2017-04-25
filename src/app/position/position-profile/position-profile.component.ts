@@ -19,6 +19,8 @@ export class PositionProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        document.title = 'Position Profile';
+
         const id = this.route.params
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
             .subscribe((position: Position) => this.position = position);
