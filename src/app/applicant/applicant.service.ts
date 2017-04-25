@@ -10,7 +10,12 @@ export class ApplicantService {
     getApplicants(): Promise<Applicant[]> {
         return this.http.get('/api/applicants')
             .toPromise()
-            .then(response => response.json() as Applicant[]);
+            .then(response => {
+                const applicants = response.json() as Applicant[];
+                applicants.forEach(applicant => applicant.type = 'Applicant');
+
+                return applicants;
+            });
     }
 
     getApplicant(id: number): Promise<Applicant> {

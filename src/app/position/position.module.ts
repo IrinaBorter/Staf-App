@@ -8,6 +8,7 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 import { PositionDashboardComponent } from './positionDashboard/positionDashboard.component';
 import { PositionProfileComponent } from './position-profile/position-profile.component';
 import { PositionCreateComponent } from './position-create/position-create.component';
+import { AutocompleteComponent } from '../widgets/autocomplete/autocomplete.component';
 import { PositionService } from './position.service';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PositionService } from './position.service';
         DatepickerModule,
     ],
     declarations: [
+        AutocompleteComponent,
         PositionDashboardComponent,
         PositionProfileComponent,
         PositionCreateComponent,

@@ -1,0 +1,10 @@
+<div class="input-field col s12">
+    <input placeholder="{{placeholder}}" id="country" type="text" class="validate filter-input" [(ngModel)]="query" (keyup)=filter()>
+</div>
+<div class="suggestions" *ngIf="filteredList.length > 0">
+    <ul>
+        <li *ngFor="let item of filteredList">
+            <a (click)="onSelect(item)">{{item.name}}</a>
+        </li>
+    </ul>
+</div>

@@ -10,7 +10,13 @@ export class EmployeeService {
     getEmployees(): Promise<Employee[]> {
         return this.http.get('/api/employees')
             .toPromise()
-            .then(response => response.json() as Employee[]);
+            .then(response =>  {
+                const employees = response.json() as Employee[];
+
+                employees.forEach(employee => employee.type = 'Employee');
+
+                return employees;
+            });
     }
 
     getEmployee(id: number): Promise<Employee> {
