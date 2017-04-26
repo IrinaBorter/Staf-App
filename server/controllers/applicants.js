@@ -26,6 +26,7 @@ function createApplicant(req, res) {
     Applicant.count({}, (error, length) => {
         const applicant = new Applicant({
             id: length + 1,
+            type: 'Applicant',
             firstName: req.body.applicant.firstName,
             lastName: req.body.applicant.lastName,
             title: req.body.applicant.title,

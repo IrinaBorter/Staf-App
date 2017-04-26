@@ -26,6 +26,7 @@ function createEmployee(req, res) {
     Employee.count({}, (error, length) => {
         const employee = new Employee({
             id: length + 1,
+            type: 'Employee',
             firstName: req.body.employee.firstName,
             lastName: req.body.employee.lastName,
             title: req.body.employee.title,

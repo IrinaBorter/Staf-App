@@ -48,11 +48,14 @@ export class PositionProfileComponent implements OnInit {
     }
 
     proposeCandidate() {
-        this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
-            if (response.status === 200) {
-                alert('Работник был успешно добавлен!');
-            }
-        });
+        if (this.selectedCandidate) {
+            this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
+                if (response.status === 200) {
+                    alert('Работник был успешно добавлен!');
+                    this.selectedCandidate = {};
+                }
+            });
+        }
     }
 
     toggleSearchTypesDropdown() {

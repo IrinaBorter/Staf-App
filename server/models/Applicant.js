@@ -8,7 +8,7 @@ const Applicant = mongoose.Schema({
     },
     type: {
         type: String,
-        required: false,
+        required: true,
     },
     firstName: {
         type: String,
