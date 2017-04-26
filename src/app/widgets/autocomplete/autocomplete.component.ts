@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'autocomplete',
@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class AutocompleteComponent {
     @Input() items: Array<any>;
     @Input() selectedItem: any;
+    @Output() selectedItemChange = new EventEmitter();
     @Input() select: Function;
     @Input() placeholder: string;
 
@@ -44,8 +45,8 @@ export class AutocompleteComponent {
     }
 
     onSelect(item: any) {
-        this.selectedItem = item;
-        this.select(item);
+        this.selectedItemChange.emit(item);
+        this.select && this.select(item);
         this.query = item.name;
         this.filteredList = [];
         this.selectedIndex = -1;

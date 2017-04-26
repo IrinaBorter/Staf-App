@@ -6,6 +6,10 @@ const Employee = mongoose.Schema({
         unique: true,
         required: true,
     },
+    type: {
+        type: String,
+        required: false,
+    },
     firstName: {
         type: String,
         required: true,

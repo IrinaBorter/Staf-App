@@ -28,7 +28,7 @@
         </ul>
         <div class="position-proposals">
             <div class="position-proposals-header">
-                <h1 class="position-proposals-title">Предложенные кандидаты</h1>
+                <h1 class="position-proposals-title">Предложенные работники</h1>
             </div>
             <div class="position-proposals-body">
                 <span class="search-type" (click)="toggleSearchTypesDropdown()">Искать {{searchType === 'Employee' ? 'Сотрудника' : 'Кандидата'}}</span>
@@ -36,8 +36,8 @@
                     <li data-value="Employee">Искать сотрудника</li>
                     <li data-value="Applicant">Искать кандидата</li>
                 </ul>
-                <autocomplete class="autocomplete" [items]="candidates" [selectedItem]="selectedCandidate" [select]="preselectCandidate" [placeholder]="placeholderText"></autocomplete>
-                <button class="proposal-button">Предложить</button>
+                <autocomplete class="autocomplete" [items]="candidates" [(selectedItem)]="selectedCandidate" [placeholder]="placeholderText"></autocomplete>
+                <button class="proposal-button" (click)="proposeCandidate()">Предложить</button>
             </div>
         </div>
     </div>

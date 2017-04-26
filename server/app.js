@@ -6,9 +6,30 @@ const bodyParser = require('body-parser');
 const server = express();
 const staticPath = path.resolve('../public/dist');
 
-const  { getPositions, getPosition, updatePosition, createPosition, deletePosition } = require('./controllers/positions');
-const  { getEmployees, getEmployee, updateEmployee, createEmployee, deleteEmployee } = require('./controllers/employees');
-const  { getApplicants, getApplicant, updateApplicant, createApplicant, deleteApplicant } = require('./controllers/applicants');
+const  {
+    getPositions,
+    getPosition,
+    updatePosition,
+    createPosition,
+    deletePosition,
+    proposeCandidate
+} = require('./controllers/positions');
+
+const  {
+    getEmployees,
+    getEmployee,
+    updateEmployee,
+    createEmployee,
+    deleteEmployee
+} = require('./controllers/employees');
+
+const  {
+    getApplicants,
+    getApplicant,
+    updateApplicant,
+    createApplicant,
+    deleteApplicant
+} = require('./controllers/applicants');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
     if (error) {
@@ -34,6 +55,7 @@ server.get('/api/positions/:id', getPosition);
 server.put('/api/positions/edit', updatePosition);
 server.post('/api/positions/create', createPosition);
 server.delete('/api/positions/delete', deletePosition);
+server.put('/api/positions/propose', proposeCandidate);
 
 server.get('/api/employees', getEmployees);
 server.get('/api/employees/:id', getEmployee);

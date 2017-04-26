@@ -36,7 +36,7 @@ export class PositionProfileComponent implements OnInit {
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
             .subscribe((position: Position) => this.position = position);
 
-        this.getCandidates();
+        this.refreshCandidates();
     }
 
     deletePosition(position: Position) {
@@ -47,9 +47,12 @@ export class PositionProfileComponent implements OnInit {
         });
     }
 
-    preselectCandidate(candidate: any) {
-        this.selectedCandidate = candidate;
-        console.log(this.selectedCandidate);
+    proposeCandidate() {
+        this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
+            if (response.status === 200) {
+                alert('Работник был успешно добавлен!');
+            }
+        });
     }
 
     toggleSearchTypesDropdown() {
@@ -60,17 +63,31 @@ export class PositionProfileComponent implements OnInit {
         this.searchType = event.target.dataset.value;
         this.placeholderText = this.searchType === 'Employee' ? 'Введите имя сотрудника' : 'Введите имя кандидата';
         this.toggleSearchTypesDropdown();
+        this.refreshCandidates();
     }
 
-    getCandidates() {
-        Promise.all([
-            this.employeeService.getEmployees(),
-            this.applicantService.getApplicants(),
-        ]).then(candidates => {
-            this.candidates = [].concat.apply([], candidates);
-            this.candidates = this.candidates.map(candidate => {
-                return { id: candidate.id, name: candidate.firstName + ' ' + candidate.lastName };
+    refreshCandidates() {
+        if (this.searchType === 'Employee') {
+            this.employeeService.getEmployees().then(employees => {
+                this.candidates = employees.map(employee => {
+                    return {
+                        id: employee.id,
+                        type: employee.type,
+                        name: employee.firstName + ' ' + employee.lastName,
+                    };
+                });
             });
-        });
+        }
+        if (this.searchType === 'Applicant') {
+            this.applicantService.getApplicants().then(applicants => {
+                this.candidates = applicants.map(applicant => {
+                    return {
+                        id: applicant.id,
+                        type: applicant.type,
+                        name: applicant.firstName + ' ' + applicant.lastName,
+                    };
+                });
+            });
+        }
     }
 }

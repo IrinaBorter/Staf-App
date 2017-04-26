@@ -75,6 +75,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  position: relative;
 }
 
 .position-proposals-title {
@@ -114,6 +115,7 @@
   padding: 10px 0;
   text-align: center;
   box-shadow: 0 1px 2px 1px $gray;
+  bottom: -100px;
 
   li {
     padding: 10px 5px;
