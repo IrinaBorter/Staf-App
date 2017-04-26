@@ -1,0 +1,27 @@
+@import '../../../assets/styles/colors';
+
+.suggestions{
+  border:solid 1px $white-gray;
+  position: absolute;
+  width: 100%;
+  background: $white;
+}
+
+.filter-input {
+  height: 25px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $gray;
+}
+
+.suggestions ul li a{
+  padding: 5px;
+  display: block;
+  text-decoration: none;
+  color: $gray;
+}
+
+.suggestions ul li a:hover{
+  background-color: $white-gray;
+}

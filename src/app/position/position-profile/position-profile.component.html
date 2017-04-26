@@ -9,20 +9,36 @@
             <button class="button delete-button" (click)="deletePosition(position)"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </nav>
     </div>
-    <ul class="position-profile-content">
-        <li class="position-profile-content-item"><span>Название позиции: </span>{{position.role}}</li>
-        <li class="position-profile-content-item"><span>Код позиции: </span>{{position.code}}</li>
-        <li class="position-profile-content-item"><span>Статус: </span>{{position.positionStatus}}</li>
-        <li class="position-profile-content-item"><span>Проект: </span>{{position.project}}</li>
-        <li class="position-profile-content-item"><span>Заработная плата: </span>{{position.salary | currency:'USD':true}}</li>
-        <li class="position-profile-content-item"><span>Первичный навык: </span>{{position.primarySkill}}</li>
-        <li class="position-profile-content-item">
-            <span>Кандидаты: </span>
-            <ul>
-                <li *ngFor="let candidate of position.candidates">{{candidate}}</li>
-            </ul>
-        </li>
-        <li class="position-profile-content-item"><span>Планируемая дата начала: </span>{{position.plannedStartDate | date}}</li>
-        <li class="position-profile-content-item"><span>Описание: </span>{{position.description}}</li>
-    </ul>
+    <div class="position-profile-body">
+        <ul class="position-profile-content">
+            <li class="position-profile-content-item"><span>Название позиции: </span>{{position.role}}</li>
+            <li class="position-profile-content-item"><span>Код позиции: </span>{{position.code}}</li>
+            <li class="position-profile-content-item"><span>Статус: </span>{{position.positionStatus}}</li>
+            <li class="position-profile-content-item"><span>Проект: </span>{{position.project}}</li>
+            <li class="position-profile-content-item"><span>Заработная плата: </span>{{position.salary | currency:'USD':true}}</li>
+            <li class="position-profile-content-item"><span>Первичный навык: </span>{{position.primarySkill}}</li>
+            <li class="position-profile-content-item">
+                <span>Кандидаты: </span>
+                <ul>
+                    <li *ngFor="let candidate of position.candidates">{{candidate}}</li>
+                </ul>
+            </li>
+            <li class="position-profile-content-item"><span>Планируемая дата начала: </span>{{position.plannedStartDate | date}}</li>
+            <li class="position-profile-content-item"><span>Описание: </span>{{position.description}}</li>
+        </ul>
+        <div class="position-proposals">
+            <div class="position-proposals-header">
+                <h1 class="position-proposals-title">Предложенные работники</h1>
+            </div>
+            <div class="position-proposals-body">
+                <span class="search-type" (click)="toggleSearchTypesDropdown()">Искать {{searchType === 'Employee' ? 'Сотрудника' : 'Кандидата'}}</span>
+                <ul *ngIf="searchTypeDropdownOpen" class="search-types-list" (click)="selectSearchType($event)">
+                    <li data-value="Employee">Искать сотрудника</li>
+                    <li data-value="Applicant">Искать кандидата</li>
+                </ul>
+                <autocomplete class="autocomplete" [items]="candidates" [(selectedItem)]="selectedCandidate" [placeholder]="placeholderText"></autocomplete>
+                <button class="proposal-button" (click)="proposeCandidate()">Предложить</button>
+            </div>
+        </div>
+    </div>
 </div>

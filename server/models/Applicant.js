@@ -6,6 +6,10 @@ const Applicant = mongoose.Schema({
         unique: true,
         required: true,
     },
+    type: {
+        type: String,
+        required: true,
+    },
     firstName: {
         type: String,
         required: true,

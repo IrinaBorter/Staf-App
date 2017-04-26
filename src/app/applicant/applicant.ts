@@ -9,4 +9,5 @@ export class Applicant {
     project: string;
     language: Array<string>;
     email: string;
+    type: string;
 }

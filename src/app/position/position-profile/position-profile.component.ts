@@ -3,6 +3,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Position } from '../position';
 import { PositionService } from '../position.service';
+import { ApplicantService } from '../../applicant/applicant.service';
+import { EmployeeService } from '../../employee/employee.service';
+import { Applicant } from '../../applicant/applicant';
+import { Employee } from '../../employee/employee';
 
 @Component({
     template: require('./position-profile.component.html'),
@@ -11,9 +15,16 @@ import { PositionService } from '../position.service';
 
 export class PositionProfileComponent implements OnInit {
     position: Position;
+    candidates: Array<any>;
+    selectedCandidate: any;
+    searchType: string = 'Employee';
+    searchTypeDropdownOpen: boolean = false;
+    placeholderText: string = 'Введите имя сотрудника';
 
     constructor(
         private positionService: PositionService,
+        private applicantService: ApplicantService,
+        private employeeService: EmployeeService,
         private route: ActivatedRoute,
         private router: Router,
     ) {}
@@ -24,6 +35,8 @@ export class PositionProfileComponent implements OnInit {
         const id = this.route.params
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
             .subscribe((position: Position) => this.position = position);
+
+        this.refreshCandidates();
     }
 
     deletePosition(position: Position) {
@@ -32,5 +45,52 @@ export class PositionProfileComponent implements OnInit {
                 this.router.navigateByUrl('positions');
             }
         });
+    }
+
+    proposeCandidate() {
+        if (this.selectedCandidate) {
+            this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
+                if (response.status === 200) {
+                    alert('Работник был успешно добавлен!');
+                    this.selectedCandidate = {};
+                }
+            });
+        }
+    }
+
+    toggleSearchTypesDropdown() {
+        this.searchTypeDropdownOpen = !this.searchTypeDropdownOpen;
+    }
+
+    selectSearchType(event: any) {
+        this.searchType = event.target.dataset.value;
+        this.placeholderText = this.searchType === 'Employee' ? 'Введите имя сотрудника' : 'Введите имя кандидата';
+        this.toggleSearchTypesDropdown();
+        this.refreshCandidates();
+    }
+
+    refreshCandidates() {
+        if (this.searchType === 'Employee') {
+            this.employeeService.getEmployees().then(employees => {
+                this.candidates = employees.map(employee => {
+                    return {
+                        id: employee.id,
+                        type: employee.type,
+                        name: employee.firstName + ' ' + employee.lastName,
+                    };
+                });
+            });
+        }
+        if (this.searchType === 'Applicant') {
+            this.applicantService.getApplicants().then(applicants => {
+                this.candidates = applicants.map(applicant => {
+                    return {
+                        id: applicant.id,
+                        type: applicant.type,
+                        name: applicant.firstName + ' ' + applicant.lastName,
+                    };
+                });
+            });
+        }
     }
 }
