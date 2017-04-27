@@ -77,16 +77,31 @@ function proposeCandidate(req, res) {
     const candidate = req.body.candidate;
     const position = req.body.position;
 
+    Object.assign(position, { positionStatus: 'Propose' });
     Promise
         .all([
-            Employee.findOne({ id: candidate.id, type: candidate.type }).exec(),
-            Applicant.findOne({ id: candidate.id, type: candidate.type }).exec(),
+            Employee.findOne({ id: candidate.id, type: candidate.type }),
+            Applicant.findOne({ id: candidate.id, type: candidate.type }),
         ])
         .then(candidates => {
             candidates
                 .filter(candidate => candidate && candidate._doc)
                 .map(candidate => candidate._doc)
-                .forEach(candidate => position.candidates.push(candidate));
+                .forEach(candidate =>  {
+                    let isCandidate = false;
+
+                    Object.assign(candidate, { status: 'Proposed' });
+
+                    position.candidates.forEach(positionCandidate => {
+                        if (positionCandidate._id === candidate._id.toString()) {
+                            isCandidate = true;
+                        }
+                    });
+
+                    if (!isCandidate) {
+                        position.candidates.push(candidate);
+                    }
+                });
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
                 if (error) {

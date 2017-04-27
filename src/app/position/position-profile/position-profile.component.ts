@@ -53,6 +53,7 @@ export class PositionProfileComponent implements OnInit {
                 if (response.status === 200) {
                     alert('Работник был успешно добавлен!');
                     this.selectedCandidate = {};
+                    location.reload();
                 }
             });
         }
