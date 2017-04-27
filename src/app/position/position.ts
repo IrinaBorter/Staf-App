@@ -7,6 +7,6 @@ export class Position {
     description: string;
     primarySkill: string;
     positionStatus: string;
-    candidates: Array<string>;
+    candidates: Array<any>;
     plannedStartDate: Date;
 }

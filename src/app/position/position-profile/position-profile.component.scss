@@ -1,4 +1,5 @@
 @import '../../../assets/styles/colors';
+@import '../../../assets/styles/sizes';
 
 .position-profile-header {
   display: flex;
@@ -162,4 +163,96 @@
   &:hover {
     background: $dark-dirty-blue;
   }
+}
+
+.proposal-candidates-dashboard {
+  margin: 10px 15px 20px;
+  box-shadow: 0 2px 5px 1px $light-gray;
+
+  .proposal-candidates-dashboard-cell {
+    padding: 20px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    vertical-align: top;
+  }
+}
+
+.table-row {
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0;
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  transition: background 0.2s;
+
+  &:not(.header):hover {
+    background: lighten($light-gray, 20%);
+  }
+}
+
+.header {
+  background-color: $gray;
+  color: $white;
+  font-size: 20px;
+
+  .column:hover {
+    background: lighten($gray, 10%);
+  }
+
+  .column:not(:last-child) {
+    border-right: 1px solid $white;
+  }
+}
+
+.column {
+  flex-grow: 0;
+  flex-shrink: 0;
+  vertical-align: top;
+  padding: 20px 10px;
+  transition: background 0.3s;
+}
+
+.candidate-first-name {
+  width: $position-code-column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  vertical-align: top;
+}
+
+.candidate-last-name {
+  width: $position-name-column;
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 4px;
+}
+
+.position {
+  width: $project-column;
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 4px;
+}
+
+.project {
+  width: $salary-column;
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 4px;
+}
+
+.primary-skill {
+  width: $description-column;
+  flex-grow: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 10px;
 }

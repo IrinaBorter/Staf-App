@@ -39,6 +39,24 @@
                 <autocomplete class="autocomplete" [items]="candidates" [(selectedItem)]="selectedCandidate" [placeholder]="placeholderText"></autocomplete>
                 <button class="proposal-button" (click)="proposeCandidate()">Предложить</button>
             </div>
+            <div *ngIf="proposalCandidates" class="position-proposals-table">
+                <div class="proposal-candidates-dashboard">
+                    <div class="table-row header">
+                        <div class="column candidate-first-name">Имя</div>
+                        <div class="column candidate-last-name">Фамилия</div>
+                        <div class="column position">Позиция</div>
+                        <div class="column project">Проект</div>
+                        <div class="column primary-skill">Первичный навык</div>
+                    </div>
+                    <div *ngFor="let candidate of proposalCandidates" class="table-row">
+                        <div class="column candidate-first-name"><a [routerLink]="[candidate.id]">{{candidate.firstName}}</a></div>
+                        <div class="column candidate-last-name"><a [routerLink]="[candidate.id]">{{candidate.lastName}}</a></div>
+                        <div class="column position">{{candidate.position}}</div>
+                        <div class="column project">{{candidate.project}}</div>
+                        <div class="column primary-skill">{{candidate.primarySkill}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
