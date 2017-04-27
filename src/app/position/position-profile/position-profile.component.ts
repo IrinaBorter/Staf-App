@@ -17,7 +17,6 @@ export class PositionProfileComponent implements OnInit {
     position: Position;
     candidates: Array<any>;
     selectedCandidate: any;
-    proposalCandidates: Array<any>;
     searchType: string = 'Employee';
     searchTypeDropdownOpen: boolean = false;
     placeholderText: string = 'Введите имя сотрудника';
@@ -35,10 +34,7 @@ export class PositionProfileComponent implements OnInit {
 
         const id = this.route.params
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
-            .subscribe((position: Position) =>  {
-                this.position = position;
-                this.proposalCandidates = position.candidates.filter(candidate => candidate.status === 'Proposed');
-            });
+            .subscribe((position: Position) => this.position = position);
 
         this.refreshCandidates();
     }
