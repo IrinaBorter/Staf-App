@@ -27,7 +27,7 @@ export class PositionProfileComponent implements OnInit {
         },
         {
             name: 'Предварительно выбрать',
-            click: () => {},
+            click: () => { this.preselectCandidate(); },
         },
         {
             name: 'Назначить',
@@ -66,7 +66,17 @@ export class PositionProfileComponent implements OnInit {
             this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
                 if (response.status === 200) {
                     alert('Работник был успешно добавлен!');
-                    this.selectedCandidate = {};
+                    location.reload();
+                }
+            });
+        }
+    }
+
+    preselectCandidate() {
+        if (this.selectedCandidate) {
+            this.positionService.preselectCandidate(this.position, this.selectedCandidate).then(response => {
+                if (response.status === 200) {
+                    alert('Работник был предварительно выбран!');
                     location.reload();
                 }
             });
@@ -107,9 +117,5 @@ export class PositionProfileComponent implements OnInit {
                 });
             });
         }
-    }
-
-    getProposalCandidates() {
-
     }
 }

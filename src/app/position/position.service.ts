@@ -42,4 +42,10 @@ export class PositionService {
             .toPromise()
             .then(response => response);
     }
+
+    preselectCandidate(position: Position, candidate: any) {
+        return this.http.put('/api/positions/preselect', { position, candidate })
+            .toPromise()
+            .then(response => response);
+    }
 }

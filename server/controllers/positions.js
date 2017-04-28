@@ -122,6 +122,36 @@ function isDuplicatedCandidate(positionCandidates, newCandidate) {
     return isDuplicatedCandidate;
 }
 
+function preselectCandidate(req, res) {
+    const candidateInfo = req.body.candidate;
+    const position = req.body.position;
+
+    Object.assign(position, { positionStatus: 'Preselect' });
+
+    getCandidates(candidateInfo)
+        .then(response => {
+            const newCandidate = response
+                .filter(candidate => candidate && candidate._doc)
+                .map(candidate => candidate._doc)[0];
+
+            if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
+                Object.assign(newCandidate, { status: 'Preselect' });
+                position.candidates.push(newCandidate);
+            }
+
+            Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
+                if (error) {
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
 module.exports =  {
     getPositions,
     getPosition,
@@ -129,4 +159,5 @@ module.exports =  {
     createPosition,
     deletePosition,
     proposeCandidate,
+    preselectCandidate,
 };
