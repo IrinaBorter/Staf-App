@@ -9,6 +9,7 @@ import { PositionDashboardComponent } from './positionDashboard/positionDashboar
 import { PositionProfileComponent } from './position-profile/position-profile.component';
 import { PositionCreateComponent } from './position-create/position-create.component';
 import { AutocompleteComponent } from '../widgets/autocomplete/autocomplete.component';
+import { MultiActionsButtonComponent } from '../widgets/multi-actions-button/multi-actions-button.component';
 import { PositionService } from './position.service';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PositionService } from './position.service';
     ],
     declarations: [
         AutocompleteComponent,
+        MultiActionsButtonComponent,
         PositionDashboardComponent,
         PositionProfileComponent,
         PositionCreateComponent,

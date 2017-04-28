@@ -1,0 +1,72 @@
+@import '../../../assets/styles/colors';
+
+.multi-actions-dropdown {
+  display: flex;
+  position: relative;
+  height: 40px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.first-action-button {
+  background: $dirty-blue;
+  border: none;
+  height: 40px;
+  padding: 5px 10px;
+  color: $white;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-dirty-blue;
+  }
+}
+
+.multi-actions-dropdown-toggle {
+  height: 40px;
+  width: 40px;
+  line-height: 30px;
+  text-align: center;
+  margin-left: 1px;
+  background: $dark-dirty-blue;
+
+  &.open {
+    height: 42px;
+  }
+
+  &:before {
+    content: "\f0d7";
+    font: 20px FontAwesome;
+    color: $white;
+    line-height: 40px;
+  }
+}
+
+.multi-actions-dropdown-menu {
+  display: block;
+  background: $dark-dirty-blue;
+  width: 100%;
+  margin-top: 1px;
+  color: $white;
+  position: absolute;
+  top: 41px;
+  left: 0;
+}
+
+.actions-dropdown-menu-action {
+  width: 100%;
+  border: none;
+  height: 45px;
+  padding: 5px 10px;
+  color: $white;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    background: darken($dark-dirty-blue, 10%);
+  }
+}

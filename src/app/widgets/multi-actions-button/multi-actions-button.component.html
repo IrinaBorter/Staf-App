@@ -1,0 +1,9 @@
+<div class="multi-actions-dropdown">
+    <button class="first-action-button" (click)="buttons[0].click()">{{buttons[0].name}}</button>
+    <div class="multi-actions-dropdown-toggle" [ngClass]="{open: isButtonsDropdownOpen}" (click)="toggleButtonsDropdown()"></div>
+    <ul class="multi-actions-dropdown-menu" *ngIf="isButtonsDropdownOpen">
+        <li class="actions-dropdown-menu-action" *ngFor="let button of buttons.slice(1)" (click)="button.click()">
+            {{button.name}}
+        </li>
+    </ul>
+</div>

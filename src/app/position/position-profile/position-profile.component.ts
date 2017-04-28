@@ -20,6 +20,20 @@ export class PositionProfileComponent implements OnInit {
     searchType: string = 'Employee';
     searchTypeDropdownOpen: boolean = false;
     placeholderText: string = 'Введите имя сотрудника';
+    candidateActions: Array<any> = [
+        {
+            name: 'Предложить',
+            click: () => { this.proposeCandidate(); },
+        },
+        {
+            name: 'Предварительно выбрать',
+            click: () => {},
+        },
+        {
+            name: 'Назначить',
+            click: () => {},
+        },
+    ];
 
     constructor(
         private positionService: PositionService,

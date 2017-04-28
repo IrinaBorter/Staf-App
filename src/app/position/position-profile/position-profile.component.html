@@ -41,7 +41,7 @@
                     <li data-value="Applicant">Искать кандидата</li>
                 </ul>
                 <autocomplete class="autocomplete" [items]="candidates" [(selectedItem)]="selectedCandidate" [placeholder]="placeholderText"></autocomplete>
-                <button class="proposal-button" (click)="proposeCandidate()">Предложить</button>
+                <multi-actions-button [buttons]="candidateActions"></multi-actions-button>
             </div>
             <div *ngIf="position.candidates" class="position-candidates-dashboard">
                 <div class="table-row header">
