@@ -12,7 +12,7 @@ const  {
     updatePosition,
     createPosition,
     deletePosition,
-    proposeCandidate
+    proposeCandidate,
 } = require('./controllers/positions');
 
 const  {
@@ -20,7 +20,7 @@ const  {
     getEmployee,
     updateEmployee,
     createEmployee,
-    deleteEmployee
+    deleteEmployee,
 } = require('./controllers/employees');
 
 const  {
@@ -28,7 +28,7 @@ const  {
     getApplicant,
     updateApplicant,
     createApplicant,
-    deleteApplicant
+    deleteApplicant,
 } = require('./controllers/applicants');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {

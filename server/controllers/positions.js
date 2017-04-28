@@ -73,35 +73,29 @@ function deletePosition(req, res) {
     });
 }
 
+function getCandidates(candidate) {
+    return Promise.all([
+        Employee.findOne({ id: candidate.id, type: candidate.type }),
+        Applicant.findOne({ id: candidate.id, type: candidate.type }),
+    ]);
+}
+
 function proposeCandidate(req, res) {
-    const candidate = req.body.candidate;
+    const candidateInfo = req.body.candidate;
     const position = req.body.position;
 
     Object.assign(position, { positionStatus: 'Propose' });
-    Promise
-        .all([
-            Employee.findOne({ id: candidate.id, type: candidate.type }),
-            Applicant.findOne({ id: candidate.id, type: candidate.type }),
-        ])
-        .then(candidates => {
-            candidates
+
+    getCandidates(candidateInfo)
+        .then(response => {
+            const newCandidate = response
                 .filter(candidate => candidate && candidate._doc)
-                .map(candidate => candidate._doc)
-                .forEach(candidate =>  {
-                    let isCandidate = false;
+                .map(candidate => candidate._doc)[0];
 
-                    Object.assign(candidate, { status: 'Proposed' });
-
-                    position.candidates.forEach(positionCandidate => {
-                        if (positionCandidate._id === candidate._id.toString()) {
-                            isCandidate = true;
-                        }
-                    });
-
-                    if (!isCandidate) {
-                        position.candidates.push(candidate);
-                    }
-                });
+            if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
+                Object.assign(newCandidate, { status: 'Proposed' });
+                position.candidates.push(newCandidate);
+            }
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
                 if (error) {
@@ -114,6 +108,18 @@ function proposeCandidate(req, res) {
         .catch(error => {
             console.log(error);
         });
+}
+
+function isDuplicatedCandidate(positionCandidates, newCandidate) {
+    let isDuplicatedCandidate = false;
+
+    positionCandidates.forEach(positionCandidate =>  {
+        if (positionCandidate._id === newCandidate._id.toString()) {
+            isDuplicatedCandidate = true;
+        }
+    });
+
+    return isDuplicatedCandidate;
 }
 
 module.exports =  {
