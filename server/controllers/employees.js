@@ -10,6 +10,16 @@ function getEmployees(req, res) {
     });
 }
 
+function getAvailableEmployees(req, res) {
+    Employee.find({ status: 'Available' }, (error, employees) => {
+        if (error) {
+            res.sendStatus(400);
+        } else {
+            res.status(200).send(employees);
+        }
+    });
+}
+
 function getEmployee(req, res) {
     const id = req.params.id;
 
@@ -29,6 +39,7 @@ function createEmployee(req, res) {
             type: 'Employee',
             firstName: req.body.employee.firstName,
             lastName: req.body.employee.lastName,
+            status: 'Available',
             title: req.body.employee.title,
             location: req.body.employee.location,
             primarySkill: req.body.employee.primarySkill,
@@ -72,10 +83,21 @@ function deleteEmployee(req, res) {
     });
 }
 
+function changeEmployeeStatus(employee, newStatus) {
+    Employee.findOneAndUpdate({ _id: employee._id }, { status: newStatus }, (error) => {
+        if (error) {
+            console.log('Unable to change Employee status');
+            console.error(error);
+        }
+    });
+}
+
 module.exports =  {
     getEmployees,
+    getAvailableEmployees,
     getEmployee,
     updateEmployee,
     createEmployee,
     deleteEmployee,
+    changeEmployeeStatus,
 };

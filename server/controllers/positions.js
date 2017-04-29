@@ -2,6 +2,9 @@ const Position = require('../models/Position');
 const Employee = require('../models/Employee');
 const Applicant = require('../models/Applicant');
 
+const { changeApplicantStatus } = require('./applicants');
+const { changeEmployeeStatus } = require('./employees');
+
 function getPositions(req, res) {
     Position.find({}, (error, positions) => {
         if (error) {
@@ -94,6 +97,7 @@ function proposeCandidate(req, res) {
 
             if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
                 Object.assign(newCandidate, { status: 'Proposed' });
+                changeCandidateStatus(newCandidate, 'Proposed');
                 position.candidates.push(newCandidate);
             }
 
@@ -136,6 +140,7 @@ function preselectCandidate(req, res) {
 
             if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
                 Object.assign(newCandidate, { status: 'Preselect' });
+                changeCandidateStatus(newCandidate, 'Preselected');
                 position.candidates.push(newCandidate);
             }
 
@@ -150,6 +155,15 @@ function preselectCandidate(req, res) {
         .catch(error => {
             console.log(error);
         });
+}
+
+function changeCandidateStatus(candidate, newStatus) {
+    if (candidate.type === 'Employee') {
+        changeEmployeeStatus(candidate, newStatus);
+    }
+    if (candidate.type === 'Applicant') {
+        changeApplicantStatus(candidate, newStatus);
+    }
 }
 
 module.exports =  {

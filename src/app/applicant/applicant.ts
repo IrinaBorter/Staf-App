@@ -2,6 +2,7 @@ export class Applicant {
     id: number;
     firstName: string;
     lastName: string;
+    status: string;
     title: string;
     location: string;
     primarySkill: string;

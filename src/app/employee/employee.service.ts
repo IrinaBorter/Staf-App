@@ -13,6 +13,12 @@ export class EmployeeService {
             .then(response => response.json() as Employee[]);
     }
 
+    getAvailableEmployees(): Promise<Employee[]> {
+        return this.http.get('/api/employees/available')
+            .toPromise()
+            .then(response => response.json() as Employee[]);
+    }
+
     getEmployee(id: number): Promise<Employee> {
         return this.http.get(`/api/employees/${id}`)
             .toPromise()

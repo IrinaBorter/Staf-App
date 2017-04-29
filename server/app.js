@@ -18,6 +18,7 @@ const  {
 
 const  {
     getEmployees,
+    getAvailableEmployees,
     getEmployee,
     updateEmployee,
     createEmployee,
@@ -26,6 +27,7 @@ const  {
 
 const  {
     getApplicants,
+    getAvailableApplicants,
     getApplicant,
     updateApplicant,
     createApplicant,
@@ -60,12 +62,14 @@ server.put('/api/positions/propose', proposeCandidate);
 server.put('/api/positions/preselect', preselectCandidate);
 
 server.get('/api/employees', getEmployees);
+server.get('/api/employees/available', getAvailableEmployees);
 server.get('/api/employees/:id', getEmployee);
 server.put('/api/employees/edit', updateEmployee);
 server.post('/api/employees/create', createEmployee);
 server.delete('/api/employees/delete', deleteEmployee);
 
 server.get('/api/applicants', getApplicants);
+server.get('/api/applicants/available', getAvailableApplicants);
 server.get('/api/applicants/:id', getApplicant);
 server.put('/api/applicants/edit', updateApplicant);
 server.post('/api/applicants/create', createApplicant);

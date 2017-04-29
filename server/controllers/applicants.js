@@ -10,6 +10,16 @@ function getApplicants(req, res) {
     });
 }
 
+function getAvailableApplicants(req, res) {
+    Applicant.find({ status: 'Available' }, (error, applicants) => {
+        if (error) {
+            res.sendStatus(400);
+        } else {
+            res.status(200).send(applicants);
+        }
+    });
+}
+
 function getApplicant(req, res) {
     const id = req.params.id;
 
@@ -29,6 +39,7 @@ function createApplicant(req, res) {
             type: 'Applicant',
             firstName: req.body.applicant.firstName,
             lastName: req.body.applicant.lastName,
+            status: 'Available',
             title: req.body.applicant.title,
             location: req.body.applicant.location,
             primarySkill: req.body.applicant.primarySkill,
@@ -72,10 +83,21 @@ function deleteApplicant(req, res) {
     });
 }
 
+function changeApplicantStatus(applicant, newStatus) {
+    Applicant.findOneAndUpdate({ _id: applicant._id }, { status: newStatus }, (error) => {
+        if (error) {
+            console.log('Unable to change Applicant status');
+            console.error(error);
+        }
+    });
+}
+
 module.exports =  {
     getApplicants,
+    getAvailableApplicants,
     getApplicant,
     updateApplicant,
     createApplicant,
     deleteApplicant,
+    changeApplicantStatus,
 };

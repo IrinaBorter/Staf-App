@@ -96,7 +96,7 @@ export class PositionProfileComponent implements OnInit {
 
     refreshCandidates() {
         if (this.searchType === 'Employee') {
-            this.employeeService.getEmployees().then(employees => {
+            this.employeeService.getAvailableEmployees().then(employees => {
                 this.candidates = employees.map(employee => {
                     return {
                         id: employee.id,
@@ -107,7 +107,7 @@ export class PositionProfileComponent implements OnInit {
             });
         }
         if (this.searchType === 'Applicant') {
-            this.applicantService.getApplicants().then(applicants => {
+            this.applicantService.getAvailableApplicants().then(applicants => {
                 this.candidates = applicants.map(applicant => {
                     return {
                         id: applicant.id,

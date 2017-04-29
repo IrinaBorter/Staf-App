@@ -18,6 +18,10 @@ const Applicant = mongoose.Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: false

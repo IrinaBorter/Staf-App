@@ -13,6 +13,12 @@ export class ApplicantService {
             .then(response => response.json() as Applicant[]);
     }
 
+    getAvailableApplicants(): Promise<Applicant[]> {
+        return this.http.get('/api/applicants/available')
+            .toPromise()
+            .then(response => response.json() as Applicant[]);
+    }
+
     getApplicant(id: number): Promise<Applicant> {
         return this.http.get(`/api/applicants/${id}`)
             .toPromise()
