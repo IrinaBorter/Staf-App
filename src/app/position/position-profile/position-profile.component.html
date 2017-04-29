@@ -57,7 +57,14 @@
                             {{candidate.firstName}} {{candidate.lastName}}
                         </a>
                     </div>
-                    <div class="column candidate-status">{{candidate.status}}</div>
+                    <div class="column candidate-status">
+                        <entity-status-dropdown
+                                [entity]="candidate"
+                                [statuses]="availableStatuses[candidate.status]"
+                                [onStatusChange]="onStatusChange"
+                        >
+                        </entity-status-dropdown>
+                    </div>
                     <div class="column position">{{candidate.position}}</div>
                     <div class="column project">{{candidate.project}}</div>
                     <div class="column primary-skill">{{candidate.primarySkill}}</div>

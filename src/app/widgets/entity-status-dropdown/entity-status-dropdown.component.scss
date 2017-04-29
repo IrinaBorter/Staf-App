@@ -1,0 +1,38 @@
+@import '../../../assets/styles/colors';
+
+.current-status {
+  color: $dark-dirty-blue;
+}
+
+.entity-status-dropdown-toggle {
+  padding: 0 5px;
+  border-radius: 2px;
+  display: inline-block;
+  background: $dark-dirty-blue;
+  cursor: pointer;
+
+  &:before {
+    content: "\f0d7";
+    font: 14px FontAwesome;
+    color: $white;
+  }
+}
+
+.entity-status-dropdown-menu {
+  position: absolute;
+  padding: 10px 0;
+  min-width: 100px;
+  background: $white;
+  color: $dark-dirty-blue;
+  box-shadow: 1px 1px 1px $white-gray;
+
+  li {
+    cursor: pointer;
+    padding: 5px 10px;
+
+    &:hover {
+      background: $dirty-blue;
+      color: $white;
+    }
+  }
+}
