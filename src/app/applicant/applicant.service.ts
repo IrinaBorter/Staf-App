@@ -42,5 +42,11 @@ export class ApplicantService {
             .toPromise()
             .then(response => response);
     }
+
+    changeApplicantStatus(applicant: Applicant, newStatus: string) {
+        return this.http.put('/api/applicants/change-status', { applicant, newStatus })
+            .toPromise()
+            .then(response => response);
+    }
 }
 

@@ -42,5 +42,11 @@ export class EmployeeService {
             .toPromise()
             .then(response => response);
     }
+
+    changeEmployeeStatus(employee: Employee, newStatus: string) {
+        return this.http.put('/api/employees/change-status', { employee, newStatus })
+            .toPromise()
+            .then(response => response);
+    }
 }
 
