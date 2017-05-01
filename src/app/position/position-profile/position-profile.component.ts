@@ -72,7 +72,7 @@ export class PositionProfileComponent implements OnInit {
             this.positionService.proposeCandidate(this.position, this.selectedCandidate).then(response => {
                 if (response.status === 200) {
                     alert('Работник был успешно добавлен!');
-                    location.reload();
+                    this.position = response.position;
                 }
             });
         }
@@ -83,7 +83,7 @@ export class PositionProfileComponent implements OnInit {
             this.positionService.preselectCandidate(this.position, this.selectedCandidate).then(response => {
                 if (response.status === 200) {
                     alert('Работник был предварительно выбран!');
-                    location.reload();
+                    this.position = response.position;
                 }
             });
         }
@@ -94,7 +94,7 @@ export class PositionProfileComponent implements OnInit {
             this.positionService.assignCandidate(this.position, this.selectedCandidate).then(response => {
                 if (response.status === 200) {
                     alert('Работник был назначен!');
-                    location.reload();
+                    this.position = response.position;
                 }
             });
         }
@@ -161,6 +161,7 @@ export class PositionProfileComponent implements OnInit {
         return this.positionService.cancelCandidate(candidate, position).then(response => {
             if (response.status === 200) {
                 alert('Кандидат был отменен!');
+                this.position = response.position;
             }
         });
     }

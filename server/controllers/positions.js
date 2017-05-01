@@ -105,7 +105,7 @@ function proposeCandidate(req, res) {
                 if (error) {
                     res.sendStatus(400);
                 } else {
-                    res.sendStatus(200);
+                    res.send({ status: 200, position: position });
                 }
             });
         })
@@ -150,7 +150,7 @@ function preselectCandidate(req, res) {
                 if (error) {
                     res.sendStatus(400);
                 } else {
-                    res.sendStatus(200);
+                    res.send({ status: 200, position: position });
                 }
             });
         })
@@ -199,7 +199,7 @@ function assignCandidate(req, res) {
                 if (error) {
                     res.sendStatus(400);
                 } else {
-                    res.sendStatus(200);
+                    res.send({ status: 200, position: position });
                 }
             });
 
@@ -249,9 +249,12 @@ function cancelCandidate(req, res) {
                     console.error(error);
                     res.sendStatus(400);
                 } else {
-                    res.sendStatus(200);
+                    res.send({ status: 200, position: position });
                 }
             });
+
+            canceledCandidate.position = {};
+            updateCandidate(canceledCandidate);
         }
     });
 }

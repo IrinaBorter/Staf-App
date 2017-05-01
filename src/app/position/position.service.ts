@@ -40,24 +40,24 @@ export class PositionService {
     proposeCandidate(position: Position, candidate: any) {
         return this.http.put('/api/positions/propose', { position, candidate })
             .toPromise()
-            .then(response => response);
+            .then(response =>  response.json());
     }
 
     preselectCandidate(position: Position, candidate: any) {
         return this.http.put('/api/positions/preselect', { position, candidate })
             .toPromise()
-            .then(response => response);
+            .then(response =>  response.json());
     }
 
     assignCandidate(position: Position, candidate: any) {
         return this.http.put('/api/positions/assign', { position, candidate })
             .toPromise()
-            .then(response => response);
+            .then(response =>  response.json());
     }
 
     cancelCandidate(candidate: any, position: Position) {
         return this.http.put('/api/positions/cancel', { candidate, position })
             .toPromise()
-            .then(response => response);
+            .then(response =>  response.json());
     }
 }
