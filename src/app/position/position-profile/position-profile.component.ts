@@ -35,9 +35,9 @@ export class PositionProfileComponent implements OnInit {
         },
     ];
     availableStatuses: Object = {
-        'Available': ['Propose', 'Preselect', 'Assign', 'Cancel'],
+        'Available': ['Proposed', 'Preselect', 'Assign', 'Cancel'],
         'Proposed': ['Assign', 'Cancel'],
-        'Preselect': ['Propose', 'Assign', 'Cancel'],
+        'Preselect': ['Proposed', 'Assign', 'Cancel'],
     };
 
     constructor(
