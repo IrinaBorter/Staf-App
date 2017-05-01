@@ -1,6 +1,6 @@
 <div class="entity-status-dropdown">
     <span class="current-status">{{entity.status}}</span>
-    <div class="entity-status-dropdown-toggle" [ngClass]="{open: isButtonsDropdownOpen}" (click)="toggleDropdown()"></div>
+    <div class="entity-status-dropdown-toggle" *ngIf="entity.status !== completedStatus" [ngClass]="{open: isButtonsDropdownOpen}" (click)="toggleDropdown()"></div>
     <ul class="entity-status-dropdown-menu" *ngIf="isDropdownOpen">
         <li class="entity-status-menu-item" *ngFor="let status of statuses" (click)="onStatusChange(entity, status)">
             {{status}}

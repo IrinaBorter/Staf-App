@@ -34,7 +34,7 @@
             <div class="position-proposals-header">
                 <h1 class="position-proposals-title">Предложенные работники</h1>
             </div>
-            <div class="position-proposals-body">
+            <div class="position-proposals-body" *ngIf="position.positionStatus !== 'Assign'">
                 <span class="search-type" (click)="toggleSearchTypesDropdown()">Искать {{searchType === 'Employee' ? 'Сотрудника' : 'Кандидата'}}</span>
                 <ul *ngIf="searchTypeDropdownOpen" class="search-types-list" (click)="selectSearchType($event)">
                     <li data-value="Employee">Искать сотрудника</li>
@@ -62,6 +62,7 @@
                                 [entity]="candidate"
                                 [statuses]="availableStatuses[candidate.status]"
                                 [onStatusChange]="onStatusChange.bind(this)"
+                                [completedStatus]="'Assign'"
                         >
                         </entity-status-dropdown>
                     </div>

@@ -12,6 +12,7 @@ export class EntityStatusDropdownComponent {
     @Input() entity: Object;
     @Input() statuses: Array<any>;
     @Input() onStatusChange: Function;
+    @Input() completedStatus: string;
 
     toggleDropdown() {
         this.isDropdownOpen = !this.isDropdownOpen;
