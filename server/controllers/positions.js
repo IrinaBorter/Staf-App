@@ -222,6 +222,40 @@ function assignCandidate(req, res) {
         });
 }
 
+function cancelCandidate(req, res) {
+    const canceledCandidate = req.body.candidate;
+    const position = req.body.position;
+
+    Position.findOne({ id: position.id }, (error, position) => {
+        let indexOfCanceledCandidate;
+
+        position.candidates.forEach((candidate, index) => {
+            if (candidate.id === canceledCandidate.id) {
+                indexOfCanceledCandidate = index;
+            }
+        });
+
+        if (indexOfCanceledCandidate !== undefined) {
+            position.candidates = position.candidates
+                .slice(0, indexOfCanceledCandidate)
+                .concat(position.candidates.slice(indexOfCanceledCandidate + 1));
+
+            if (!position.candidates.length) {
+                position.positionStatus = 'Open';
+            }
+
+            Position.findOneAndUpdate({ id: position.id }, position, error => {
+                if (error) {
+                    console.error(error);
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+}
+
 module.exports =  {
     getPositions,
     getPosition,
@@ -231,4 +265,5 @@ module.exports =  {
     proposeCandidate,
     preselectCandidate,
     assignCandidate,
+    cancelCandidate,
 };

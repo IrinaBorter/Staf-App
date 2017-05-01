@@ -54,4 +54,10 @@ export class PositionService {
             .toPromise()
             .then(response => response);
     }
+
+    cancelCandidate(candidate: any, position: Position) {
+        return this.http.put('/api/positions/cancel', { candidate, position })
+            .toPromise()
+            .then(response => response);
+    }
 }

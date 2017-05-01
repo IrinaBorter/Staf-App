@@ -15,6 +15,7 @@ const  {
     proposeCandidate,
     preselectCandidate,
     assignCandidate,
+    cancelCandidate,
 } = require('./controllers/positions');
 
 const  {
@@ -64,6 +65,7 @@ server.delete('/api/positions/delete', deletePosition);
 server.put('/api/positions/propose', proposeCandidate);
 server.put('/api/positions/preselect', preselectCandidate);
 server.put('/api/positions/assign', assignCandidate);
+server.put('/api/positions/cancel', cancelCandidate);
 
 server.get('/api/employees', getEmployees);
 server.get('/api/employees/available/:id', getAvailableEmployees);

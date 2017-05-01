@@ -137,6 +137,10 @@ export class PositionProfileComponent implements OnInit {
     }
 
     onStatusChange(candidate: any, newStatus: string) {
+        if (newStatus === 'Cancel') {
+            return this.cancelStatus(candidate, this.position);
+        }
+
         if (candidate.type === 'Employee') {
             return this.employeeService.changeEmployeeStatus(candidate, newStatus).then(response => {
                 if (response.status === 200) {
@@ -151,5 +155,13 @@ export class PositionProfileComponent implements OnInit {
                 }
             });
         }
+    }
+
+    cancelStatus(candidate: any, position: Position) {
+        return this.positionService.cancelCandidate(candidate, position).then(response => {
+            if (response.status === 200) {
+                alert('Кандидат был отменен!');
+            }
+        });
     }
 }
