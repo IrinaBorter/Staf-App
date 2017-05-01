@@ -48,4 +48,10 @@ export class PositionService {
             .toPromise()
             .then(response => response);
     }
+
+    assignCandidate(position: Position, candidate: any) {
+        return this.http.put('/api/positions/assign', { position, candidate })
+            .toPromise()
+            .then(response => response);
+    }
 }

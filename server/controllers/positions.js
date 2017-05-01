@@ -96,9 +96,9 @@ function proposeCandidate(req, res) {
                 .map(candidate => candidate._doc)[0];
 
             if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
-                Object.assign(newCandidate, { status: 'Proposed' });
-                changeCandidateStatus(newCandidate, 'Proposed');
+                Object.assign(newCandidate, { status: 'Proposed', position: { id: position.id, role: position.role } });
                 position.candidates.push(newCandidate);
+                updateCandidate(newCandidate);
             }
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
@@ -130,7 +130,9 @@ function preselectCandidate(req, res) {
     const candidateInfo = req.body.candidate;
     const position = req.body.position;
 
-    Object.assign(position, { positionStatus: 'Preselect' });
+    if (position.status === 'Open') {
+        Object.assign(position, { positionStatus: 'Preselect' });
+    }
 
     getCandidates(candidateInfo)
         .then(response => {
@@ -139,9 +141,9 @@ function preselectCandidate(req, res) {
                 .map(candidate => candidate._doc)[0];
 
             if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
-                Object.assign(newCandidate, { status: 'Preselect' });
-                changeCandidateStatus(newCandidate, 'Preselected');
+                Object.assign(newCandidate, { status: 'Preselect', position: { id: position.id, role: position.role } });
                 position.candidates.push(newCandidate);
+                updateCandidate(newCandidate);
             }
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
@@ -157,13 +159,67 @@ function preselectCandidate(req, res) {
         });
 }
 
-function changeCandidateStatus(candidate, newStatus) {
+function updateCandidate(candidate) {
     if (candidate.type === 'Employee') {
-        changeEmployeeStatus(candidate, newStatus);
+        Employee.findOneAndUpdate({ id: candidate.id }, candidate, (error) => {
+            if (error) {
+                console.error(error);
+            }
+        });
     }
+
     if (candidate.type === 'Applicant') {
-        changeApplicantStatus(candidate, newStatus);
+        Applicant.findOneAndUpdate({ id: candidate.id }, candidate, (error) => {
+            if (error) {
+                console.error(error);
+            }
+        });
     }
+}
+
+function assignCandidate(req, res) {
+    const candidateInfo = req.body.candidate;
+    const position = req.body.position;
+
+    Object.assign(position, { positionStatus: 'Assign' });
+
+    getCandidates(candidateInfo)
+        .then(response => {
+            const newCandidate = response
+                .filter(candidate => candidate && candidate._doc)
+                .map(candidate => candidate._doc)[0];
+
+            if (!isDuplicatedCandidate(position.candidates, newCandidate)) {
+                Object.assign(newCandidate, { status: 'Assign', position: { id: position.id, role: position.role } });
+                position.candidates = [newCandidate];
+                updateCandidate(newCandidate);
+            }
+
+            Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
+                if (error) {
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+
+            Position.find({}, (error, positions) => {
+                positions.forEach( (position, index) => {
+                    if (position.id !== newCandidate.position.id) {
+                        position.candidates = position.candidates.slice(0, index).concat(position.candidates.slice(index + 1));
+
+                        Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
+                            if (error) {
+                                console.error(error);
+                            }
+                        });
+                    }
+                });
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
 
 module.exports =  {
@@ -174,4 +230,5 @@ module.exports =  {
     deletePosition,
     proposeCandidate,
     preselectCandidate,
+    assignCandidate,
 };

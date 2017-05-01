@@ -1,4 +1,5 @@
 const Applicant = require('../models/Applicant');
+const Position = require('../models/Position');
 
 function getApplicants(req, res) {
     Applicant.find({}, (error, applicants) => {
@@ -11,11 +12,23 @@ function getApplicants(req, res) {
 }
 
 function getAvailableApplicants(req, res) {
-    Applicant.find({ status: 'Available' }, (error, applicants) => {
+    const positionId = req.params.id;
+
+    Applicant.find({}, (error, applicants) => {
         if (error) {
             res.sendStatus(400);
         } else {
-            res.status(200).send(applicants);
+            Position.findOne({ id: positionId }, (error, position) => {
+                const availableApplicants = applicants.filter(applicant => {
+                    if (!applicant.position.id) {
+                        return true;
+                    } else {
+                        return position.id !== applicant.position.id;
+                    }
+                });
+
+                res.status(200).send(availableApplicants);
+            });
         }
     });
 }
@@ -84,11 +97,31 @@ function deleteApplicant(req, res) {
 }
 
 function changeApplicantStatus(applicant, newStatus) {
-    Applicant.findOneAndUpdate({ _id: applicant._id }, { status: newStatus }, (error) => {
+    Applicant.findOneAndUpdate({ _id: applicant._id.toString() }, { status: newStatus }, (error) => {
         if (error) {
             console.log('Unable to change Applicant status');
             console.error(error);
         }
+
+        Position.findOneAndUpdate({ _id: applicant.position._id }, { positionStatus: newStatus });
+    });
+
+    if (newStatus === 'Assign') {
+        removeApplicantFromAllPositions();
+    }
+}
+
+function removeApplicantFromAllPositions() {
+    Position.find({}, (error, positions) => {
+        positions.forEach(position => {
+            position.candidates = [];
+
+            Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
+                if (error) {
+                    console.error(error);
+                }
+            });
+        });
     });
 }
 

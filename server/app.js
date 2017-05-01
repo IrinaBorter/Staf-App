@@ -14,6 +14,7 @@ const  {
     deletePosition,
     proposeCandidate,
     preselectCandidate,
+    assignCandidate,
 } = require('./controllers/positions');
 
 const  {
@@ -23,6 +24,7 @@ const  {
     updateEmployee,
     createEmployee,
     deleteEmployee,
+    changeEmployeeStatus,
 } = require('./controllers/employees');
 
 const  {
@@ -32,6 +34,7 @@ const  {
     updateApplicant,
     createApplicant,
     deleteApplicant,
+    changeApplicantStatus,
 } = require('./controllers/applicants');
 
 mongoose.connect('mongodb://localhost/staff', (error) => {
@@ -60,20 +63,23 @@ server.post('/api/positions/create', createPosition);
 server.delete('/api/positions/delete', deletePosition);
 server.put('/api/positions/propose', proposeCandidate);
 server.put('/api/positions/preselect', preselectCandidate);
+server.put('/api/positions/assign', assignCandidate);
 
 server.get('/api/employees', getEmployees);
-server.get('/api/employees/available', getAvailableEmployees);
+server.get('/api/employees/available/:id', getAvailableEmployees);
 server.get('/api/employees/:id', getEmployee);
 server.put('/api/employees/edit', updateEmployee);
 server.post('/api/employees/create', createEmployee);
 server.delete('/api/employees/delete', deleteEmployee);
+server.put('/api/employees/change-status', changeEmployeeStatus);
 
 server.get('/api/applicants', getApplicants);
-server.get('/api/applicants/available', getAvailableApplicants);
+server.get('/api/applicants/available/:id', getAvailableApplicants);
 server.get('/api/applicants/:id', getApplicant);
 server.put('/api/applicants/edit', updateApplicant);
 server.post('/api/applicants/create', createApplicant);
 server.delete('/api/applicants/delete', deleteApplicant);
+server.put('/api/applicants/change-status', changeApplicantStatus);
 
 server.get('*', (request, response) => {
     response.sendFile(staticPath + '/index.html');

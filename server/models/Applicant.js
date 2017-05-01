@@ -35,7 +35,7 @@ const Applicant = mongoose.Schema({
         required: true
     },
     position: {
-        type: String,
+        type: Object,
         required: false
     },
     project: {

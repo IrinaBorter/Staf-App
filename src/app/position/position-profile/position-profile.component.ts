@@ -31,7 +31,7 @@ export class PositionProfileComponent implements OnInit {
         },
         {
             name: 'Назначить',
-            click: () => {},
+            click: () => { this.assignCandidate(); },
         },
     ];
 
@@ -48,9 +48,10 @@ export class PositionProfileComponent implements OnInit {
 
         const id = this.route.params
             .switchMap((params: Params) => this.positionService.getPosition(+params['id']))
-            .subscribe((position: Position) => this.position = position);
-
-        this.refreshCandidates();
+            .subscribe((position: Position) => {
+                this.position = position;
+                this.refreshCandidates();
+            });
     }
 
     deletePosition(position: Position) {
@@ -83,6 +84,17 @@ export class PositionProfileComponent implements OnInit {
         }
     }
 
+    assignCandidate() {
+        if (this.selectedCandidate) {
+            this.positionService.assignCandidate(this.position, this.selectedCandidate).then(response => {
+                if (response.status === 200) {
+                    alert('Работник был назначен!');
+                    location.reload();
+                }
+            });
+        }
+    }
+
     toggleSearchTypesDropdown() {
         this.searchTypeDropdownOpen = !this.searchTypeDropdownOpen;
     }
@@ -96,7 +108,7 @@ export class PositionProfileComponent implements OnInit {
 
     refreshCandidates() {
         if (this.searchType === 'Employee') {
-            this.employeeService.getAvailableEmployees().then(employees => {
+            this.employeeService.getAvailableEmployees(this.position.id).then(employees => {
                 this.candidates = employees.map(employee => {
                     return {
                         id: employee.id,
@@ -107,7 +119,7 @@ export class PositionProfileComponent implements OnInit {
             });
         }
         if (this.searchType === 'Applicant') {
-            this.applicantService.getAvailableApplicants().then(applicants => {
+            this.applicantService.getAvailableApplicants(this.position.id).then(applicants => {
                 this.candidates = applicants.map(applicant => {
                     return {
                         id: applicant.id,

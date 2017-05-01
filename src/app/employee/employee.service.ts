@@ -13,8 +13,8 @@ export class EmployeeService {
             .then(response => response.json() as Employee[]);
     }
 
-    getAvailableEmployees(): Promise<Employee[]> {
-        return this.http.get('/api/employees/available')
+    getAvailableEmployees(positionId: any): Promise<Employee[]> {
+        return this.http.get(`/api/employees/available/${positionId}`)
             .toPromise()
             .then(response => response.json() as Employee[]);
     }
