@@ -18,9 +18,6 @@
             <label for="position-code">Код позиции: </label>
             <input type="text" id="position-code" name="code" [(ngModel)]="position.code">
 
-            <label for="position-status">Статус: </label>
-            <input type="text" id="position-status" name="status" [(ngModel)]="position.positionStatus">
-
             <label for="project">Проект: </label>
             <input type="text" id="project" name="project" [(ngModel)]="position.project">
 
@@ -30,9 +27,6 @@
         <div class="position-create-form-column">
             <label for="primary-skill">Первичный навык: </label>
             <input type="text" id="primary-skill" name="primarySkill" [(ngModel)]="position.primarySkill">
-
-            <label for="candidates">Кандидаты: </label>
-            <input type="text" id="candidates" name="candidates" [(ngModel)]="position.candidates">
 
             <label for="planned-start-date">Планируемая дата начала: </label>
             <material-datepicker [(date)]="yourModelDate" id="planned-start-date"></material-datepicker>

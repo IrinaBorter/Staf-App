@@ -36,8 +36,8 @@ function createPosition(req, res) {
             project: req.body.position.project,
             salary: req.body.position.salary,
             primarySkill: req.body.position.primarySkill,
-            positionStatus: req.body.position.positionStatus,
-            candidates: req.body.position.candidates,
+            positionStatus: 'Open',
+            candidates: [],
             plannedStartDate: req.body.position.plannedStartDate,
             description: req.body.position.description,
         });
