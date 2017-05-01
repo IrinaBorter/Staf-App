@@ -96,25 +96,70 @@ function deleteApplicant(req, res) {
     });
 }
 
-function changeApplicantStatus(applicant, newStatus) {
-    Applicant.findOneAndUpdate({ _id: applicant._id.toString() }, { status: newStatus }, (error) => {
+function changeApplicantStatus(req, res) {
+    const applicant = req.body.applicant;
+    const newStatus = req.body.newStatus;
+
+    Object.assign(applicant, {status: newStatus});
+
+    Applicant.findOneAndUpdate({ _id: applicant._id }, applicant, (error) => {
         if (error) {
             console.log('Unable to change Applicant status');
             console.error(error);
+            res.sendStatus(400);
+        } else {
+            updatePosition(applicant.position.id, applicant, newStatus);
+            res.sendStatus(200);
         }
-
-        Position.findOneAndUpdate({ _id: applicant.position._id }, { positionStatus: newStatus });
     });
-
-    if (newStatus === 'Assign') {
-        removeApplicantFromAllPositions();
-    }
 }
 
-function removeApplicantFromAllPositions() {
+function updatePosition(positionId, applicant, newStatus) {
+    Position.findOne({ id: positionId }, (error, position) => {
+        if (!error) {
+            position.positionStatus = applicant.status;
+
+            position.candidates = position.candidates.map(candidate => {
+                if (candidate.id === applicant.id && candidate.type === 'Applicant') {
+                    return applicant;
+                } else {
+                    return candidate;
+                }
+            });
+
+            Position.findOneAndUpdate({ id: positionId }, position, error => {
+                if (error) {
+                    console.error(error);
+                } else {
+                    if (newStatus === 'Assign') {
+                        removeApplicantFromAllPositions(applicant);
+                    }
+                }
+            })
+        }
+    });
+}
+
+function removeApplicantFromAllPositions(applicant) {
     Position.find({}, (error, positions) => {
-        positions.forEach(position => {
-            position.candidates = [];
+        positions.forEach( (position) => {
+            let indexOfAssignedCandidate;
+
+            position.candidates.forEach((candidate, index) => {
+                if (candidate.id === applicant.id && candidate.type === 'Applicant') {
+                    indexOfAssignedCandidate = index;
+                }
+            });
+
+            if (indexOfAssignedCandidate !== undefined) {
+                if (position.id === applicant.position.id) {
+                    position.candidates = position.candidates.slice(indexOfAssignedCandidate, indexOfAssignedCandidate + 1);
+                } else {
+                    position.candidates = position.candidates
+                        .slice(0, indexOfAssignedCandidate)
+                        .concat(position.candidates.slice(indexOfAssignedCandidate + 1));
+                }
+            }
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
                 if (error) {

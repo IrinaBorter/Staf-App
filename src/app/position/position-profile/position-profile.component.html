@@ -61,7 +61,7 @@
                         <entity-status-dropdown
                                 [entity]="candidate"
                                 [statuses]="availableStatuses[candidate.status]"
-                                [onStatusChange]="onStatusChange"
+                                [onStatusChange]="onStatusChange.bind(this)"
                         >
                         </entity-status-dropdown>
                     </div>

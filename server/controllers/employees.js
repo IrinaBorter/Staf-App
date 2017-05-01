@@ -100,25 +100,67 @@ function changeEmployeeStatus(req, res) {
     const employee = req.body.employee;
     const newStatus = req.body.newStatus;
 
-    Employee.findOneAndUpdate({ _id: employee._id.toString() }, { status: newStatus }, (error) => {
+    Object.assign(employee, {status: newStatus});
+
+    Employee.findOneAndUpdate({ _id: employee._id }, employee, (error) => {
         if (error) {
             console.log('Unable to change Employee status');
             console.error(error);
             res.sendStatus(400);
         } else {
-            Position.findOneAndUpdate({ id: employee.position.id }, { positionStatus: newStatus });
-            if (newStatus === 'Assign') {
-                removeEmployeeFromAllPositions();
-            }
+            updatePosition(employee.position.id, employee, newStatus);
             res.sendStatus(200);
         }
     });
 }
 
-function removeEmployeeFromAllPositions() {
+function updatePosition(positionId, employee, newStatus) {
+    Position.findOne({ id: positionId }, (error, position) => {
+        if (!error) {
+            position.positionStatus = newStatus;
+
+            position.candidates = position.candidates.map(candidate => {
+                if (candidate.id === employee.id && candidate.type === 'Employee') {
+                    return employee;
+                } else {
+                    return candidate;
+                }
+            });
+
+            Position.findOneAndUpdate({ id: positionId }, position, error => {
+                if (error) {
+                    console.error(error);
+                    res.sendStatus(400);
+                } else {
+                    if (newStatus === 'Assign') {
+                        removeEmployeeFromAllPositions(employee);
+                    }
+                }
+            })
+        }
+    });
+}
+
+function removeEmployeeFromAllPositions(employee) {
     Position.find({}, (error, positions) => {
-        positions.forEach(position => {
-            position.candidates = [];
+        positions.forEach( (position) => {
+            let indexOfAssignedCandidate;
+
+            position.candidates.forEach((candidate, index) => {
+                if (candidate.id === employee.id && candidate.type === 'Employee') {
+                    indexOfAssignedCandidate = index;
+                }
+            });
+
+            if (indexOfAssignedCandidate !== undefined) {
+                if (position.id === employee.position.id) {
+                    position.candidates = position.candidates.slice(indexOfAssignedCandidate, indexOfAssignedCandidate + 1);
+                } else {
+                    position.candidates = position.candidates
+                        .slice(0, indexOfAssignedCandidate)
+                        .concat(position.candidates.slice(indexOfAssignedCandidate + 1));
+                }
+            }
 
             Position.findOneAndUpdate({ _id: position._id }, position, (error) => {
                 if (error) {
