@@ -15,7 +15,7 @@
     <div *ngFor="let employee of employees" class="table-row">
         <div class="column employee-first-name"><a [routerLink]="[employee.id]">{{employee.firstName}}</a></div>
         <div class="column employee-last-name"><a [routerLink]="[employee.id]">{{employee.lastName}}</a></div>
-        <div class="column position">{{employee.position}}</div>
+        <div class="column position">{{employee.position.role}}</div>
         <div class="column project">{{employee.project}}</div>
         <div class="column primary-skill">{{employee.primarySkill}}</div>
     </div>
