@@ -34,6 +34,11 @@ export class PositionProfileComponent implements OnInit {
             click: () => { this.assignCandidate(); },
         },
     ];
+    availableStatuses: Object = {
+        'Available': ['Propose', 'Preselect', 'Assign', 'Cancel'],
+        'Proposed': ['Assign', 'Cancel'],
+        'Preselect': ['Propose', 'Assign', 'Cancel'],
+    };
 
     constructor(
         private positionService: PositionService,
@@ -127,6 +132,23 @@ export class PositionProfileComponent implements OnInit {
                         name: applicant.firstName + ' ' + applicant.lastName,
                     };
                 });
+            });
+        }
+    }
+
+    onStatusChange(candidate: any, newStatus: string) {
+        if (candidate.type === 'Employee') {
+            return this.employeeService.changeEmployeeStatus(candidate, newStatus).then(response => {
+                if (response.status === 200) {
+                    alert('Статус был изменен успешно!');
+                }
+            });
+        }
+        if (candidate.type === 'Applicant') {
+            return this.applicantService.changeApplicantStatus(candidate, newStatus).then(response => {
+                if (response.status === 200) {
+                    alert('Статус был изменен успешно!');
+                }
             });
         }
     }
