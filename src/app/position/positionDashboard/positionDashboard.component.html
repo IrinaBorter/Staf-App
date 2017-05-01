@@ -19,4 +19,9 @@
         <div class="column salary">{{position.salary | currency:'USD':true}}</div>
         <div class="column description">{{position.description}}</div>
     </div>
+    <div *ngIf="positions && !positions.length">
+        <empty-content
+                [message]="'Нет созданных позиций. Вы можете создать новую позицию нажав кпопку <Создать позицию>'"
+        ></empty-content>
+    </div>
 </div>

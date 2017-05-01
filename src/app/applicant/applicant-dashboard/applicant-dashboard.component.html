@@ -19,4 +19,9 @@
         <div class="column project">{{applicant.project}}</div>
         <div class="column primary-skill">{{applicant.primarySkill}}</div>
     </div>
+    <div *ngIf="applicants && !applicants.length">
+        <empty-content
+                [message]="'Нет созданных кандидатов. Вы можете создать нового кандидата нажав кпопку <Создать Кандидата>'"
+        ></empty-content>
+    </div>
 </div>

@@ -11,6 +11,7 @@ import { PositionCreateComponent } from './position-create/position-create.compo
 import { AutocompleteComponent } from '../widgets/autocomplete/autocomplete.component';
 import { MultiActionsButtonComponent } from '../widgets/multi-actions-button/multi-actions-button.component';
 import { EntityStatusDropdownComponent } from '../widgets/entity-status-dropdown/entity-status-dropdown.component';
+import { EmptyContentModule } from '../widgets/empty-content/empty-content.module';
 import { PositionService } from './position.service';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PositionService } from './position.service';
         HttpModule,
         FormsModule,
         DatepickerModule,
+        EmptyContentModule,
     ],
     declarations: [
         AutocompleteComponent,

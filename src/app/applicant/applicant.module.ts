@@ -9,6 +9,7 @@ import { ApplicantService } from './applicant.service';
 import { ApplicantCreateComponent } from './applicant-create/applicant-create.component';
 import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
 import { ApplicantDashboardComponent } from './applicant-dashboard/applicant-dashboard.component';
+import { EmptyContentModule } from '../widgets/empty-content/empty-content.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { ApplicantDashboardComponent } from './applicant-dashboard/applicant-das
         ApplicantRoutingModule,
         HttpModule,
         FormsModule,
+        EmptyContentModule,
     ],
     declarations: [
         ApplicantCreateComponent,

@@ -9,6 +9,7 @@ import { EmployeeService } from './employee.service';
 import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { EmptyContentModule } from '../widgets/empty-content/empty-content.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
         EmployeeRoutingModule,
         HttpModule,
         FormsModule,
+        EmptyContentModule,
     ],
     declarations: [
         EmployeeCreateComponent,

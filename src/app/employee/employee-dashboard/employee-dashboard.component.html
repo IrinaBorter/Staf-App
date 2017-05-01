@@ -19,4 +19,9 @@
         <div class="column project">{{employee.project}}</div>
         <div class="column primary-skill">{{employee.primarySkill}}</div>
     </div>
+    <div *ngIf="employees && !employees.length">
+        <empty-content
+                [message]="'Нет созданных сотрудников. Вы можете создать нового сотрудника нажав кпопку <Создать Сотрудника>'"
+        ></empty-content>
+    </div>
 </div>

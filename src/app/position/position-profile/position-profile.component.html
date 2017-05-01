@@ -70,6 +70,9 @@
                     <div class="column primary-skill">{{candidate.primarySkill}}</div>
                 </div>
             </div>
+            <div *ngIf="!position.candidates.length">
+                <empty-content [message]="'Нет предложенных работников!'"></empty-content>
+            </div>
         </div>
     </div>
 </div>
