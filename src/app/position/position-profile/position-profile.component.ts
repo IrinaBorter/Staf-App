@@ -73,6 +73,7 @@ export class PositionProfileComponent implements OnInit {
                 if (response.status === 200) {
                     alert('Работник был успешно добавлен!');
                     this.position = response.position;
+                    this.refreshCandidates();
                 }
             });
         }
@@ -84,6 +85,7 @@ export class PositionProfileComponent implements OnInit {
                 if (response.status === 200) {
                     alert('Работник был предварительно выбран!');
                     this.position = response.position;
+                    this.refreshCandidates();
                 }
             });
         }
@@ -95,6 +97,7 @@ export class PositionProfileComponent implements OnInit {
                 if (response.status === 200) {
                     alert('Работник был назначен!');
                     this.position = response.position;
+                    this.refreshCandidates();
                 }
             });
         }
@@ -145,6 +148,9 @@ export class PositionProfileComponent implements OnInit {
             return this.employeeService.changeEmployeeStatus(candidate, newStatus).then(response => {
                 if (response.status === 200) {
                     alert('Статус был изменен успешно!');
+                    this.positionService.getPosition(this.position.id).then(position => {
+                        this.position = position;
+                    });
                 }
             });
         }
@@ -152,6 +158,9 @@ export class PositionProfileComponent implements OnInit {
             return this.applicantService.changeApplicantStatus(candidate, newStatus).then(response => {
                 if (response.status === 200) {
                     alert('Статус был изменен успешно!');
+                    this.positionService.getPosition(this.position.id).then(position => {
+                        this.position = position;
+                    });
                 }
             });
         }
