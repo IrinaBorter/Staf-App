@@ -6,15 +6,17 @@
 </div>
 <div class="employee-dashboard">
     <div class="table-row header">
-        <div class="column employee-first-name">Имя</div>
-        <div class="column employee-last-name">Фамилия</div>
+        <div class="column employee-name">Имя</div>
+        <div class="column employee-status">Статус</div>
         <div class="column position">Позиция</div>
         <div class="column project">Проект</div>
         <div class="column primary-skill">Первичный навык</div>
     </div>
     <div *ngFor="let employee of employees" class="table-row">
-        <div class="column employee-first-name"><a [routerLink]="[employee.id]">{{employee.firstName}}</a></div>
-        <div class="column employee-last-name"><a [routerLink]="[employee.id]">{{employee.lastName}}</a></div>
+        <div class="column employee-name">
+            <a [routerLink]="[employee.id]">{{employee.firstName}} {{employee.lastName}}</a>
+        </div>
+        <div class="column employee-status">{{employee.status}}</div>
         <div class="column position">{{employee.position.role}}</div>
         <div class="column project">{{employee.project}}</div>
         <div class="column primary-skill">{{employee.primarySkill}}</div>

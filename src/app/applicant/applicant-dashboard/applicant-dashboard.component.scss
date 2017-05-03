@@ -91,8 +91,8 @@
   transition: background 0.3s;
 }
 
-.applicant-first-name {
-  width: $position-code-column;
+.applicant-name {
+  width: $applicant-name-column;
   flex-grow: 0;
   -webkit-flex-grow: 0;
   flex-shrink: 0;
@@ -100,8 +100,8 @@
   vertical-align: top;
 }
 
-.applicant-last-name {
-  width: $position-name-column;
+.applicant-status {
+  width: $applicant-status-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
   overflow: hidden;
@@ -111,7 +111,7 @@
 }
 
 .position {
-  width: $project-column;
+  width: $applicant-position-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
   overflow: hidden;
@@ -121,7 +121,7 @@
 }
 
 .project {
-  width: $salary-column;
+  width: $project-column;
   flex-grow: 1;
   -webkit-flex-grow: 1;
   overflow: hidden;
@@ -131,7 +131,7 @@
 }
 
 .primary-skill {
-  width: $description-column;
+  width: $applicant-primary-skill;
   flex-grow: 1;
   -webkit-flex-grow: 1;
   overflow: hidden;
