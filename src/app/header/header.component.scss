@@ -26,3 +26,16 @@ header {
     width: 40px;
   }
 }
+
+.sign-out {
+  color: $white;
+  font-size: 30px;
+  align-self: center;
+  position: absolute;
+  right: 20px;
+  transition: font-size 0.3s;
+
+  &:hover {
+    font-size: 35px;
+  }
+}
