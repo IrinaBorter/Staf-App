@@ -1,11 +1,33 @@
-<div style="display: block;">
-    <canvas baseChart width="400" height="400"
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [colors]="lineChartColors"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+<div class="position-charts-header">
+    <h1 class="position-charts-title">Аналитика позиции</h1>
+</div>
+<div class="chart-container bar">
+    <h2 class="legend">Распределение позиций по количеству кандидатов</h2>
+    <div class="chart" *ngIf="candidatesCount && positionNames">
+        <canvas baseChart
+                [datasets]="candidatesCount"
+                [labels]="positionNames"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+    </div>
+</div>
+
+<div class="chart-container pie">
+    <h2 class="legend">Распределение позиций по статусам</h2>
+    <div class="chart" *ngIf="candidatesCount && positionNames">
+        <canvas baseChart
+                [data]="positionsInStatusCount"
+                [labels]="positionStatuses"
+                [chartType]="pieChartType"></canvas>
+    </div>
+</div>
+<div class="chart-container pie">
+    <h2 class="legend">Распределение позиций по первичному навыку</h2>
+    <div class="chart" *ngIf="candidatesCount && positionNames">
+        <canvas baseChart
+                [data]="positionsInPrimarySkill"
+                [labels]="positionPrimarySkills"
+                [chartType]="doughnutChartType"></canvas>
+    </div>
 </div>

@@ -1,66 +1,60 @@
 import { Component } from '@angular/core';
 
+import { PositionService } from '../position.service';
+
 @Component({
     selector: 'line-chart-demo',
     template: require('./position-charts.component.html'),
+    styles: [require('./position-charts.component.scss')],
 })
-export class LineChartDemoComponent {
-    // lineChart
-    public lineChartData:Array<any> = [
-        {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-        {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
-    ];
-    public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    public lineChartOptions:any = {
-        responsive: true
+export class PositionChartsComponent {
+    positionNames: Array<string>;
+    candidatesCount: Array<any>;
+    positionStatuses: Array<string>;
+    positionsInStatusCount: Array<any>;
+    positionPrimarySkills: Array<string>;
+    positionsInPrimarySkill: Array<any>;
+
+    barChartOptions: any = {
+        scaleShowVerticalLines: false,
+        responsive: true,
     };
-    public lineChartColors:Array<any> = [
-        { // grey
-            backgroundColor: 'rgba(148,159,177,0.2)',
-            borderColor: 'rgba(148,159,177,1)',
-            pointBackgroundColor: 'rgba(148,159,177,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-        },
-        { // dark grey
-            backgroundColor: 'rgba(77,83,96,0.2)',
-            borderColor: 'rgba(77,83,96,1)',
-            pointBackgroundColor: 'rgba(77,83,96,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(77,83,96,1)'
-        },
-        { // grey
-            backgroundColor: 'rgba(148,159,177,0.2)',
-            borderColor: 'rgba(148,159,177,1)',
-            pointBackgroundColor: 'rgba(148,159,177,1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-        }
-    ];
-    public lineChartLegend:boolean = true;
-    public lineChartType:string = 'line';
+    barChartType: string = 'bar';
+    lineChartType: string = 'line';
+    pieChartType: string = 'pie';
+    doughnutChartType: string = 'doughnut';
+    barChartLegend: boolean = true;
 
-    public randomize():void {
-        let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-        for (let i = 0; i < this.lineChartData.length; i++) {
-            _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-            for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-                _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-            }
-        }
-        this.lineChartData = _lineChartData;
-    }
+    constructor(private positionService: PositionService) {}
 
-    // events
-    public chartClicked(e:any):void {
-        console.log(e);
-    }
+    ngOnInit() {
+        return this.positionService.getPositions().then(positions => {
+            this.positionNames = positions.map(position => position.role);
+            this.positionStatuses = ['Open', 'Preselect', 'Proposed', 'Assign'];
+            this.positionPrimarySkills = [
+                'JS',
+                'Java',
+                '.NET',
+                'C++',
+                'Functional Testing',
+                'Management',
+                'Excel',
+                'Scrum',
+                'Trello',
+            ];
 
-    public chartHovered(e:any):void {
-        console.log(e);
+            this.candidatesCount = [{
+                data: positions.map(position => position.candidates.length),
+                label: 'Распределение количества кандидатов к позиции',
+            }];
+
+            this.positionsInStatusCount = this.positionStatuses.map(status =>  {
+                return positions.filter(position => position.positionStatus === status).length;
+            });
+
+            this.positionsInPrimarySkill = this.positionPrimarySkills.map(skill =>  {
+                return positions.filter(position => position.primarySkill === skill).length;
+            });
+        });
     }
 }

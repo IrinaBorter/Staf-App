@@ -8,7 +8,7 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 import { PositionDashboardComponent } from './positionDashboard/positionDashboard.component';
 import { PositionProfileComponent } from './position-profile/position-profile.component';
 import { PositionCreateComponent } from './position-create/position-create.component';
-import { LineChartDemoComponent } from './position-charts/position-charts.component';
+import { PositionChartsComponent } from './position-charts/position-charts.component';
 
 import { AutocompleteComponent } from '../widgets/autocomplete/autocomplete.component';
 import { MultiActionsButtonComponent } from '../widgets/multi-actions-button/multi-actions-button.component';
@@ -35,7 +35,7 @@ import { ChartsModule } from 'ng2-charts';
         PositionDashboardComponent,
         PositionProfileComponent,
         PositionCreateComponent,
-        LineChartDemoComponent,
+        PositionChartsComponent,
     ],
     providers: [PositionService],
 })

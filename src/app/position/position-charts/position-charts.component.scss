@@ -1,0 +1,38 @@
+@import '../../../assets/styles/colors';
+
+.position-charts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: $white-gray;
+}
+
+.position-charts-title {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: $dark-dirty-blue;
+}
+
+.legend {
+  text-align: center;
+  padding: 15px 5px;
+  font-weight: normal;
+  color: #0f788c;
+}
+
+@media (min-width: 992px) {
+  .chart-container {
+    width: 60%;
+    margin: 20px auto 0;
+  }
+
+  .pie {
+    width: 40%;
+  }
+
+  .bar {
+    width: 60%;
+  }
+}

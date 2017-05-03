@@ -37,6 +37,22 @@
   }
 }
 
+.position-button {
+  background: $dirty-blue;
+  border: 1px solid $dark-dirty-blue;
+  height: 40px;
+  padding: 5px 10px;
+  color: $white;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  cursor: pointer;
+  margin-right: 20px;
+
+  &:hover {
+    background: $dark-dirty-blue;
+  }
+}
+
 .position-dashboard {
   margin: 10px 15px 20px;
   box-shadow: 0 2px 5px 1px $light-gray;
