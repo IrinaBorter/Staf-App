@@ -1,19 +1,49 @@
 <div class="position-dashboard-header">
     <h1 class="position-dashboard-title">Позиции</h1>
     <nav class="position-dashboard-nav">
-        <button class="position-button" [routerLink]="['/positions/charts']">Аналитика</button>
+        <button class="position-button" [routerLink]="['/positions/charts']">Аналитика <i class="fa fa-bar-chart" aria-hidden="true"></i></button>
         <button class="create-position-button" [routerLink]="['/positions/create']">Создать позицию</button>
     </nav>
 </div>
 <div class="position-dashboard">
     <div class="table-row header">
-        <div class="column position-code">Код позиции</div>
-        <div class="column position-name">Название позиции</div>
-        <div class="column project">Проект</div>
-        <div class="column salary">Заработная плата</div>
-        <div class="column description">Описание</div>
+        <div class="column position-code"
+             [ngClass]="{
+                'in-order': order === 'code' && !reverse,
+                'out-order': order === 'code' && reverse
+             }"
+             (click)="changeOrder('code')"
+        >Код позиции</div>
+        <div class="column position-name"
+             [ngClass]="{
+                'in-order': order === 'role' && !reverse,
+                'out-order': order === 'role' && reverse
+             }"
+             (click)="changeOrder('role')"
+        >Название позиции</div>
+        <div class="column project"
+             [ngClass]="{
+                'in-order': order === 'project' && !reverse,
+                'out-order': order === 'project' && reverse
+             }"
+             (click)="changeOrder('project')"
+        >Проект</div>
+        <div class="column salary"
+             [ngClass]="{
+                'in-order': order === 'salary' && !reverse,
+                'out-order': order === 'salary' && reverse
+             }"
+             (click)="changeOrder('salary')"
+        >Заработная плата</div>
+        <div class="column description"
+             [ngClass]="{
+                'in-order': order === 'description' && !reverse,
+                'out-order': order === 'description' && reverse
+             }"
+             (click)="changeOrder('description')"
+        >Описание</div>
     </div>
-    <div *ngFor="let position of positions" class="table-row">
+    <div *ngFor="let position of positions | orderBy: order: reverse" class="table-row">
         <div class="column position-code">{{position.code}}</div>
         <div class="column position-name"><a [routerLink]="[position.id]">{{position.role}}</a></div>
         <div class="column project">{{position.project}}</div>

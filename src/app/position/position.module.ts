@@ -17,6 +17,7 @@ import { EmptyContentModule } from '../widgets/empty-content/empty-content.modul
 import { PositionService } from './position.service';
 
 import { ChartsModule } from 'ng2-charts';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { ChartsModule } from 'ng2-charts';
         DatepickerModule,
         EmptyContentModule,
         ChartsModule,
+        Ng2OrderModule,
     ],
     declarations: [
         AutocompleteComponent,

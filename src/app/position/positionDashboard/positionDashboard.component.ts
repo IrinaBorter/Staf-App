@@ -11,6 +11,8 @@ import { PositionService } from '../position.service';
 
 export class PositionDashboardComponent implements OnInit {
     positions: Position[];
+    order: string = 'code';
+    reverse: boolean = false;
 
     constructor(private positionService: PositionService) {}
 
@@ -20,5 +22,14 @@ export class PositionDashboardComponent implements OnInit {
         this.positionService.getPositions().then(positions => {
             this.positions = positions;
         });
+    }
+
+    changeOrder(newOrder: string) {
+        if (this.order === newOrder) {
+            this.reverse = !this.reverse;
+        } else {
+            this.order = newOrder;
+            this.reverse = false;
+        }
     }
 }
