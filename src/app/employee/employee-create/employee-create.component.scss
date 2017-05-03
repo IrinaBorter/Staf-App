@@ -7,6 +7,10 @@
   background: lighten($light-gray, 20%);
   color: $dark-dirty-blue;
   justify-content: space-between;
+
+  h1 {
+    font-weight: normal;
+  }
 }
 
 .employee-create-nav {
