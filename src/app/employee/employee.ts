@@ -6,7 +6,7 @@ export class Employee {
     title: string;
     location: string;
     primarySkill: string;
-    position: string;
+    position: Object;
     project: string;
     language: Array<string>;
     email: string;

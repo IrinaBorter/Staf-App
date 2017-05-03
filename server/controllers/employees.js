@@ -56,7 +56,7 @@ function createEmployee(req, res) {
             title: req.body.employee.title,
             location: req.body.employee.location,
             primarySkill: req.body.employee.primarySkill,
-            position: req.body.employee.position,
+            position: req.body.employee.position || { id: 0, role: '' },
             project: req.body.employee.project,
             language: req.body.employee.language,
             email: req.body.employee.email,

@@ -56,7 +56,7 @@ function createApplicant(req, res) {
             title: req.body.applicant.title,
             location: req.body.applicant.location,
             primarySkill: req.body.applicant.primarySkill,
-            position: req.body.applicant.position,
+            position: req.body.applicant.position || { id: 0, role: '' },
             project: req.body.applicant.project,
             language: req.body.applicant.language,
             email: req.body.applicant.email,
