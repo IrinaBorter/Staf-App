@@ -65,6 +65,8 @@
   transition: background 0.5s;
   cursor: pointer;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 
   &:hover {
     background: darken($dark-dirty-blue, 10%);
