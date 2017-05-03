@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PositionDashboardComponent } from './positionDashboard/positionDashboard.component';
 import { PositionProfileComponent } from './position-profile/position-profile.component';
 import { PositionCreateComponent } from './position-create/position-create.component';
+import { LineChartDemoComponent } from './position-charts/position-charts.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: 'positions/create',
         component: PositionCreateComponent,
+    },
+    {
+        path: 'positions/charts',
+        component: LineChartDemoComponent,
     },
     {
         path: 'positions/:id',

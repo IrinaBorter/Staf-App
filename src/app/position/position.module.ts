@@ -8,11 +8,15 @@ import { DatepickerModule } from 'angular2-material-datepicker';
 import { PositionDashboardComponent } from './positionDashboard/positionDashboard.component';
 import { PositionProfileComponent } from './position-profile/position-profile.component';
 import { PositionCreateComponent } from './position-create/position-create.component';
+import { LineChartDemoComponent } from './position-charts/position-charts.component';
+
 import { AutocompleteComponent } from '../widgets/autocomplete/autocomplete.component';
 import { MultiActionsButtonComponent } from '../widgets/multi-actions-button/multi-actions-button.component';
 import { EntityStatusDropdownComponent } from '../widgets/entity-status-dropdown/entity-status-dropdown.component';
 import { EmptyContentModule } from '../widgets/empty-content/empty-content.module';
 import { PositionService } from './position.service';
+
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     imports: [
@@ -22,6 +26,7 @@ import { PositionService } from './position.service';
         FormsModule,
         DatepickerModule,
         EmptyContentModule,
+        ChartsModule,
     ],
     declarations: [
         AutocompleteComponent,
@@ -30,6 +35,7 @@ import { PositionService } from './position.service';
         PositionDashboardComponent,
         PositionProfileComponent,
         PositionCreateComponent,
+        LineChartDemoComponent,
     ],
     providers: [PositionService],
 })
