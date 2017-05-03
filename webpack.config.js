@@ -91,6 +91,8 @@ module.exports = {
 
         new CopyWebpackPlugin([
             { from: 'src/assets', to: 'assets' },
+            { from: 'src/login.html' },
+            { from: 'src/signup.html' },
         ]),
     ]
 }
