@@ -62,4 +62,8 @@ export class PositionCreateComponent implements OnInit {
             }
         });
     }
+
+    cancel() {
+        window.history.back();
+    }
 }

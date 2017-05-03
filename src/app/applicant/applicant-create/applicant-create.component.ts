@@ -63,4 +63,8 @@ export class ApplicantCreateComponent implements OnInit {
             }
         });
     }
+
+    cancel() {
+        window.history.back();
+    }
 }

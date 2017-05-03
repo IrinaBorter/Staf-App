@@ -2,7 +2,7 @@
     <div class="applicant-create-header">
         <h1>{{applicant.firstName + ' ' + applicant.lastName}}</h1>
         <nav class="applicant-create-nav">
-            <button class="cancel-button button">Отмена</button>
+            <button class="cancel-button button" (click)="cancel()">Отмена</button>
             <button class="save-button button"
                     (click)="mode === 'create' ? createApplicant(applicant) : updateApplicant(applicant)"
             >

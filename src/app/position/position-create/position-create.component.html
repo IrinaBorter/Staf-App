@@ -2,7 +2,7 @@
     <div class="position-create-header">
         <h1>{{position.role}}</h1>
         <nav class="position-create-nav">
-            <button class="cancel-button button">Отмена</button>
+            <button class="cancel-button button" (click)="cancel()">Отмена</button>
             <button class="save-button button"
                     (click)="mode === 'create' ? createPosition(position) : updatePosition(position)"
             >

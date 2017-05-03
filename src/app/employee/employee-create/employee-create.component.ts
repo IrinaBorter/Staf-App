@@ -57,4 +57,8 @@ export class EmployeeCreateComponent implements OnInit {
             }
         });
     }
+
+    cancel() {
+        window.history.back();
+    }
 }
