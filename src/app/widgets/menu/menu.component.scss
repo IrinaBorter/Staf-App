@@ -39,6 +39,7 @@
   transform: translateX(-280px);
   transition: transform 0.5s;
   border-top: 1px solid $white;
+  z-index: 1;
 
   a {
     color: $white;
