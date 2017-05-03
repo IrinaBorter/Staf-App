@@ -47,7 +47,7 @@ export class AutocompleteComponent {
     onSelect(item: any) {
         this.selectedItemChange.emit(item);
         this.select && this.select(item);
-        this.query = item.name;
+        this.query = '';
         this.filteredList = [];
         this.selectedIndex = -1;
     }
