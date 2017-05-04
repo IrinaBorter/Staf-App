@@ -10,6 +10,7 @@ import { PositionModule } from './position/position.module';
 import { EmployeeModule } from './employee/employee.module';
 import { ApplicantModule } from './applicant/applicant.module';
 import { PageNotFoundComponent } from './widgets/page-not-found/page-not-found.component';
+import { InfoComponent } from './widgets/info/info.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PageNotFoundComponent } from './widgets/page-not-found/page-not-found.c
         HeaderComponent,
         MenuComponent,
         PageNotFoundComponent,
+        InfoComponent,
     ],
     bootstrap: [ AppComponent ],
 })
