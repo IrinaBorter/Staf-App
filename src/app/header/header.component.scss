@@ -27,15 +27,19 @@ header {
   }
 }
 
-.sign-out {
+.sign-out, .about {
   color: $white;
   font-size: 30px;
   align-self: center;
   position: absolute;
   right: 20px;
   transition: font-size 0.3s;
+}
 
-  &:hover {
-    font-size: 35px;
-  }
+.sign-out:hover {
+  font-size: 35px;
+}
+
+.about {
+  right: 110px;
 }
