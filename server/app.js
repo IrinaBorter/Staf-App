@@ -72,12 +72,20 @@ server.post('/signup', passport.authenticate('signup', {
 }));
 
 server.get('/signup', (req, res) => {
-    res.sendfile(staticPath + '/signup.html');
+    res.sendfile(staticPath + '/login/signup.html');
 });
 
 server.get('/signout', (req, res) => {
     req.logout();
     res.redirect('/');
+});
+
+server.get('/login.css', (req, res) => {
+    res.sendfile(staticPath + '/login/login.css');
+});
+
+server.get('/signup.css', (req, res) => {
+    res.sendfile(staticPath + '/login/signup.css');
 });
 
 server.use('/', isAuthenticated, express.static('../public/dist'));
@@ -109,7 +117,7 @@ server.delete('/api/applicants/delete', deleteApplicant);
 server.put('/api/applicants/change-status', changeApplicantStatus);
 
 server.get('/login', (req, res) => {
-    res.sendfile(staticPath + '/login.html');
+    res.sendfile(staticPath + '/login/login.html');
 });
 
 server.get('*', isAuthenticated, (request, response) => {
@@ -121,5 +129,5 @@ function isAuthenticated(req, res, next) {
         return next();
     }
     
-    res.sendFile(staticPath + '/login.html');
+    res.sendFile(staticPath + '/login/login.html');
 }
